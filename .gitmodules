@@ -25,3 +25,6 @@
 [submodule "zsh"]
 	path = zsh
 	url = https://github.com/dcunited001/dc.files.zsh
+[submodule "ryanb"]
+	path = ryanb
+	url = https://github.com/ryanb/dotfiles

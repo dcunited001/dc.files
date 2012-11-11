@@ -1,0 +1,30 @@
+[submodule "vim"]
+	path = vim
+	url = https://github.com/dcunited001/dc.files.vim
+[submodule "init"]
+	path = init
+	url = https://github.com/dcunited001/dc.files.init
+[submodule "janus"]
+	path = janus
+	url = https://github.com/carlhuda/janus
+[submodule "rbates"]
+	path = rbates
+	url = https://github.com/ryanb/dotfiles
+[submodule "iterm"]
+	path = iterm
+	url = https://github.com/dcunited001/dc.files.iterm
+[submodule "subl"]
+	path = subl
+	url = https://github.com/dcunited001/dc.files.subl
+[submodule "kbd"]
+	path = kbd
+	url = https://github.com/dcunited001/dc.files.kbd
+[submodule "tmux"]
+	path = tmux
+	url = https://github.com/dcunited001/dc.files.tmux
+[submodule "gitconf"]
+	path = gitconf
+	url = https://github.com/dcunited001/dc.files.gitconf
+[submodule "zsh"]
+	path = zsh
+	url = https://github.com/dcunited001/dc.files.zsh

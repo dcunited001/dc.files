@@ -28,3 +28,6 @@
 [submodule "ryanb"]
 	path = ryanb
 	url = https://github.com/ryanb/dotfiles
+[submodule "omz"]
+	path = omz
+	url = https://github.com/robbyrussell/oh-my-zsh

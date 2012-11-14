@@ -31,3 +31,6 @@
 [submodule "omz"]
 	path = omz
 	url = https://github.com/robbyrussell/oh-my-zsh
+[submodule "bash"]
+	path = bash
+	url = https://github.com/dcunited001/dc.files.bash.git

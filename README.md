@@ -130,6 +130,7 @@ TODO:
 - word-wrap off
 
 ### zsh
+- review oh-my-zsh aliases
 - basic aliases
 - stub remaining scripts
 - permissions

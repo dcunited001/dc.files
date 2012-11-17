@@ -1,36 +1,36 @@
 [submodule "vim"]
 	path = vim
-	url = https://github.com/dcunited001/dc.files.vim
+	url = git@github.com:dcunited001/dc.files.vim
 [submodule "init"]
 	path = init
-	url = https://github.com/dcunited001/dc.files.init
+	url = git@github.com:dcunited001/dc.files.init
 [submodule "janus"]
 	path = janus
-	url = https://github.com/carlhuda/janus
+	url = git@github.com:carlhuda/janus
 [submodule "iterm"]
 	path = iterm
-	url = https://github.com/dcunited001/dc.files.iterm
+	url = git@github.com:dcunited001/dc.files.iterm
 [submodule "subl"]
 	path = subl
-	url = https://github.com/dcunited001/dc.files.subl
+	url = git@github.com:dcunited001/dc.files.subl
 [submodule "kbd"]
 	path = kbd
-	url = https://github.com/dcunited001/dc.files.kbd
+	url = git@github.com:dcunited001/dc.files.kbd
 [submodule "tmux"]
 	path = tmux
-	url = https://github.com/dcunited001/dc.files.tmux
+	url = git@github.com:dcunited001/dc.files.tmux
 [submodule "gitconf"]
 	path = gitconf
-	url = https://github.com/dcunited001/dc.files.gitconf
+	url = git@github.com:dcunited001/dc.files.gitconf
 [submodule "zsh"]
 	path = zsh
-	url = https://github.com/dcunited001/dc.files.zsh
+	url = git@github.com:dcunited001/dc.files.zsh
 [submodule "ryanb"]
 	path = ryanb
-	url = https://github.com/ryanb/dotfiles
+	url = git@github.com:ryanb/dotfiles
 [submodule "omz"]
 	path = omz
-	url = https://github.com/robbyrussell/oh-my-zsh
+	url = git@github.com:robbyrussell/oh-my-zsh
 [submodule "bash"]
 	path = bash
-	url = https://github.com/dcunited001/dc.files.bash.git
+	url = git@github.com:dcunited001/dc.files.bash

@@ -16,6 +16,11 @@ everything is contained in submodules:
 TODO:
 --------
 
+### next
+- mac install gnu-getopts
+- finish output-error-or-die()
+- finish convert-plist()
+
 ### general
 - finalize format for settings common to all (.aliases.all,
 .zshrc.all, etc)
@@ -51,6 +56,7 @@ TODO:
 
 ### gitconf
 - script gitconfig erb
+- FIX GITHUB CONF CREDS
 
 ### init
 - script to autoload all for mac
@@ -73,11 +79,13 @@ TODO:
 - best way to link janus' vim plugins?
 
 ### kbd
+- find old key-remap files
 - find os-level mac osx keyboard shortcut files
 - any way to find app-level mac osx keyboard shortcut files
 - are these linkable in mac osx
 - find os-level ubuntu keyboard shortcut files
 - app level ubuntu keyboard shortcut files
+- link to KR.private.xml
 - point to documentation for KeyRemap.private.xml?
 - script setup all mac shortcuts
 - script setup all ubuntu shortcuts
@@ -119,6 +127,7 @@ TODO:
 - config tpope vimmarkdown
 - basic cmds http://www.tuxfiles.org/linuxhelp/vimcheat.html
 - sub/change http://jeetworks.org/node/84
+- word-wrap off
 
 ### zsh
 - basic aliases
@@ -138,6 +147,9 @@ TODO:
 - /etc/zlogin
 - /etc/zlogout
 - automatically configure .zsh profile fonts/colors
+- zsh add new keys for navigating tab-complete
+- zsh add new char for !last-cmd-autocomplete?
+- add modkey for hard to reach symbol chars?
 
 ### other files to manage
 - good location for misc files? (preserve modularity while

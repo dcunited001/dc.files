@@ -34,3 +34,6 @@
 [submodule "bash"]
 	path = bash
 	url = git@github.com:dcunited001/dc.files.bash
+[submodule "alias"]
+	path = alias
+	url = git@github.com:dcunited001/dc.files.alias.git

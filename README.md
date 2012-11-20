@@ -3,8 +3,11 @@ dc.files
 
 working on centralizing some scripts and profile data.
 
-Install
+Install:
 ---------
+
+midi clock over internet (ntp?)
+rear proj keys
 
 everything is contained in submodules:
 - git clone https://github.com/dcunited001/dc.files
@@ -17,6 +20,7 @@ TODO:
 --------
 
 ### next
+- remove plist symlinks
 - mac install gnu-getopts
 - finish output-error-or-die()
 - finish convert-plist()
@@ -24,16 +28,26 @@ TODO:
 - convert keyremap plist to xml
 
 ### general
-- move all hidden files?
-- finalize format for settings common to all (.aliases.all,
-.zshrc.all, etc)
 - consolidate folders inside ~/.files/
 - licenses?
-- move init scripts to modules (and function to list modules?)
+- add function to list modules?
 - find a good place for misc scripts
-- manage confs for different platforms in branches
-- way to manage aliases for both bash/zsh in one location
-  (necessary?)
+- manage confs for different platforms in branches?
+- gitignores (necessary?)
+
+### zsh
+- review oh-my-zsh aliases
+- finish basic aliases
+- permissions
+- /etc/zshenv (link or copy?)
+- /etc/zprofile (link or copy?)
+- /etc/zshrc (link or copy?)
+- /etc/zlogin (link or copy?)
+- /etc/zlogout (link or copy?)
+- automatically configure .zsh profile fonts/colors
+- zsh add new keys for navigating tab-complete
+- zsh add new char for !last-cmd-autocomplete?
+- add modkey for hard to reach symbol chars?
 
 ### init
 - script to autoload all for mac
@@ -44,6 +58,7 @@ TODO:
 - functions to backup config files
 
 ### iterm
+- setup to work with external settings, but backup .plist
 - add fonts/colors to repo?
 - link fonts/colors?
 - find other color profiles
@@ -56,7 +71,7 @@ TODO:
 - are these linkable in mac osx
 - find os-level ubuntu keyboard shortcut files
 - app level ubuntu keyboard shortcut files
-- link to KR.private.xml
+- link to KR.private.xml?
 - point to documentation for KeyRemap.private.xml?
 - script setup all mac shortcuts
 - script setup all ubuntu shortcuts
@@ -65,6 +80,7 @@ TODO:
 - document janus bindings in vim bindings file
 
 ### vim
+- make the janus link function also create the .vim dir
 - list of vim commands to focus on learning
 - list of vim commands from janus
 - plugins folder (~/.janus?)
@@ -73,35 +89,11 @@ TODO:
 - basic cmds http://www.tuxfiles.org/linuxhelp/vimcheat.html
 - sub/change http://jeetworks.org/node/84
 
-### zsh
-- review oh-my-zsh aliases
-- basic aliases
-- stub remaining scripts
-- permissions
-- add .all scripts (zshrc.all, etc)
-- script to link .aliases.all
-- script to link .zshrc.all
-- .zshenv
-- .zprofile
-- .zshrc
-- .zlogin
-- $ZDOTDIR/.zlogout
-- /etc/zshenv
-- /etc/zprofile
-- /etc/zshrc
-- /etc/zlogin
-- /etc/zlogout
-- automatically configure .zsh profile fonts/colors
-- zsh add new keys for navigating tab-complete
-- zsh add new char for !last-cmd-autocomplete?
-- add modkey for hard to reach symbol chars?
-
 Later
 -----------
 
 ### other files to manage
-- good location for misc files? (preserve modularity while
-simplifying)
+- good location for misc files? (preserve modularity while simplifying)
 - .inputrc
 - top config
 - mac osx spaces pref.plisp
@@ -130,6 +122,7 @@ simplifying)
 - aquamacs?
 
 ### bash
+- update to use a bash dot dir
 - basic aliases
 - stub remaining scripts
 - permissions
@@ -155,6 +148,9 @@ simplifying)
 
 ### gitconf
 - script gitconfig erb
+
+### aliases
+- complete?
 
 ### subl
 - grab sublime profile (ubuntu)

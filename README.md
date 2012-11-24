@@ -6,9 +6,6 @@ working on centralizing some scripts and profile data.
 Install:
 ---------
 
-midi clock over internet (ntp?)
-rear proj keys
-
 everything is contained in submodules:
 - git clone https://github.com/dcunited001/dc.files
 - git submodule init
@@ -36,6 +33,7 @@ TODO:
 - gitignores (necessary?)
 
 ### zsh
+- remove case sensitivity?
 - review oh-my-zsh aliases
 - finish basic aliases
 - permissions

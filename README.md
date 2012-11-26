@@ -35,12 +35,18 @@ TODO:
 - gitignores (necessary?)
 - add .hushlogin?
 
-### automator
-- find way to symlink these services
+### osx
+- review osx.sh script.  split into multiple scripts?
+- create list of plist files
+- add system plists
+- add application plists
+- script to automate backing up all plists and individual plists
+- document installed applications
+- find way to symlink automator services
 - automator/applescripts/services to switch focus to apps (osx only)
 - find shortcuts configuration files
 - document shortcuts & automate configuration
-- git module?
+- will automator scripts even work if they are simply copied??
 - copy-automator-services(): init script function
 - automator bluetooth proximity script
 http://emmanuelbernard.com/blog/2010/04/01/automatically-lock-your-computer-when-you-go-away/

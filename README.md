@@ -35,6 +35,8 @@ TODO:
 - gitignores (necessary?)
 - add .hushlogin?
 
+### aliases
+
 ### osx
 - review osx.sh script.  split into multiple scripts?
 - create list of plist files
@@ -51,7 +53,6 @@ TODO:
 - automator bluetooth proximity script
 http://emmanuelbernard.com/blog/2010/04/01/automatically-lock-your-computer-when-you-go-away/
 - automator script to automate reloading keyremap private.xml
-
 
 ### zsh
 - remove case sensitivity?
@@ -167,9 +168,6 @@ Later
 
 ### gitconf
 - script gitconfig erb
-
-### aliases
-- complete?
 
 ### subl
 - grab sublime profile (ubuntu)

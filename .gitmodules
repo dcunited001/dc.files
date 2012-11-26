@@ -36,4 +36,7 @@
 	url = git@github.com:dcunited001/dc.files.bash
 [submodule "alias"]
 	path = alias
-	url = git@github.com:dcunited001/dc.files.alias.git
+	url = git@github.com:dcunited001/dc.files.alias
+[submodule "automator"]
+	path = automator
+	url = git@github.com:dcunited001/dc.files.automator

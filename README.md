@@ -32,6 +32,14 @@ TODO:
 - manage confs for different platforms in branches?
 - gitignores (necessary?)
 
+### automator
+- find way to symlink these services
+- automator/applescripts/services to switch focus to apps (osx only)
+- find shortcuts configuration files
+- document shortcuts & automate configuration
+- git module?
+- copy-automator-services(): init script function
+
 ### zsh
 - remove case sensitivity?
 - review oh-my-zsh aliases

@@ -37,6 +37,6 @@
 [submodule "alias"]
 	path = alias
 	url = git@github.com:dcunited001/dc.files.alias
-[submodule "automator"]
-	path = automator
-	url = git@github.com:dcunited001/dc.files.automator
+[submodule "osx"]
+	path = osx
+	url = git@github.com:dcunited001/dc.files.osx

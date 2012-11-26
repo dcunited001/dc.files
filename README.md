@@ -23,6 +23,8 @@ TODO:
 - finish convert-plist()
 - convert iterm plist to xml
 - convert keyremap plist to xml
+- create osx repo and add defaults scripts
+- move automator repo to osx
 
 ### general
 - consolidate folders inside ~/.files/
@@ -31,6 +33,7 @@ TODO:
 - find a good place for misc scripts
 - manage confs for different platforms in branches?
 - gitignores (necessary?)
+- add .hushlogin?
 
 ### automator
 - find way to symlink these services
@@ -39,6 +42,10 @@ TODO:
 - document shortcuts & automate configuration
 - git module?
 - copy-automator-services(): init script function
+- automator bluetooth proximity script
+http://emmanuelbernard.com/blog/2010/04/01/automatically-lock-your-computer-when-you-go-away/
+- automator script to automate reloading keyremap private.xml
+
 
 ### zsh
 - remove case sensitivity?

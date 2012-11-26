@@ -38,7 +38,7 @@ TODO:
 ### aliases
 
 ### osx
-- review osx.sh script.  split into multiple scripts?
+- add new automator services
 - create list of plist files
 - add system plists
 - add application plists
@@ -52,6 +52,7 @@ TODO:
 - copy-automator-services(): init script function
 - automator bluetooth proximity script
 http://emmanuelbernard.com/blog/2010/04/01/automatically-lock-your-computer-when-you-go-away/
+- fix script to reload private.xml (this isn't working?)
 - automator script to automate reloading keyremap private.xml
 
 ### zsh
@@ -70,6 +71,7 @@ http://emmanuelbernard.com/blog/2010/04/01/automatically-lock-your-computer-when
 - add modkey for hard to reach symbol chars?
 
 ### init
+- osx init script?
 - script to autoload all for mac
 - script to autoload all for ubuntu/linux
 - .plist - store both bin and xml?
@@ -87,6 +89,7 @@ http://emmanuelbernard.com/blog/2010/04/01/automatically-lock-your-computer-when
 ### kbd
 - address issue with plist files
 - find os-level mac osx keyboard shortcut files
+  (com.apple.symbolichotkeys.plist)
 - any way to find app-level mac osx keyboard shortcut files
 - are these linkable in mac osx
 - find os-level ubuntu keyboard shortcut files
@@ -116,7 +119,7 @@ Later
 - good location for misc files? (preserve modularity while simplifying)
 - .inputrc
 - top config
-- mac osx spaces pref.plisp
+- mac osx spaces pref.plist
 
 ### misc scripts/functions
 - clear all history

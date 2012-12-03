@@ -36,8 +36,13 @@ TODO:
 - add .hushlogin?
 
 ### aliases
+- turn OSX ssh on/off for user
+- turn OSX filesharing on/off for user?
 
 ### osx
+- osx init script?
+- document settings missing from osx.sh
+- osx init script?
 - add new automator services
 - create list of plist files
 - add system plists

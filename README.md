@@ -40,6 +40,7 @@ TODO:
 - turn OSX filesharing on/off for user?
 
 ### osx
+- ichat plugin for campfire (http://g-off.github.com/Campfire/)
 - osx init script?
 - document settings missing from osx.sh
 - osx init script?

@@ -40,3 +40,6 @@
 [submodule "osx"]
 	path = osx
 	url = git@github.com:dcunited001/dc.files.osx
+[submodule "prelude"]
+	path = prelude
+	url = git@github.com:bbatsov/prelude

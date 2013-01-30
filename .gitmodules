@@ -43,3 +43,6 @@
 [submodule "prelude"]
 	path = prelude
 	url = git@github.com:bbatsov/prelude
+[submodule "emacs"]
+	path = emacs
+	url = git@github.com:dcunited001/dc.files.emacs

@@ -46,3 +46,6 @@
 [submodule "emacs"]
 	path = emacs
 	url = git@github.com:dcunited001/dc.files.emacs
+[submodule "rb"]
+	path = rb
+	url = git@github.com:dcunited001/dc.files.rb

@@ -13,6 +13,14 @@ everything is contained in submodules:
 - cd ~/.files
 - bash init/mac.sh
 
+## NOTE: 
+> i've recently noticed that every repo/submodule config in the project
+> is set up using SSH, instead of HTTPS.  So you will be able to clone
+> the repo, but you will will not be able to update the submodules, 
+> unless git/github have your SSH pub/private keys properly set up. 
+> you'll notice in the git configs that everything is set up with
+> git@github.com, instead of https://github.com.
+
 TODO:
 --------
 

@@ -8,7 +8,7 @@ Install:
 
 i recently reinstalled OSX onto a fresh SSD.  I configured first through pivotal-sprout, then merged in my configs.  I detail this process below.
 
-> Note: These are my personal dotfiles.  There's a ton of good resources and ideas in here, but don't expect everything to just work!  Besides, templates and dotfiles are only useful if you have a mental model of them in your head.  That badass emacs/vim config is worthless if you don't know it.  So read teh codez!!1 
+> Note: These are my personal dotfiles.  There's a ton of good resources and ideas in here, but don't expect everything to just work!  Besides, templates and dotfiles are only useful if you have a mental model of them in your head.  That badass emacs/vim config is worthless if you don't know it.  So read teh codez!!1
 
 setup OSX with [https://github.com/pivotal-sprout/sprout-wrap](Pivotal Sprout):
 1. install git
@@ -43,11 +43,11 @@ other setup:
   - [Divvy](http://mizage.com/divvy/) ($15/trial)
   - [FluidApps](http://fluidapp.com/) ($5/trial) (mostly using my create-ssb function now, ~/.files/func.mac.sh)
   - [Paragon ExtFS Drivers for OSX](http://www.paragon-software.com/home/extfs-mac/) ($40/trial)
-- Configured PCKeyboardHack 
+- Configured PCKeyboardHack
   - Caps => Escape
   - Escape => Command R
   - Command R => Command L
-- Configured KeyRemapForMacbook 
+- Configured KeyRemapForMacbook
   - `cp ~/.files/kbd/KeyRemap4Macbook/*.xml ~/Library/Application\ Support/KeyRemap4MacBook/`
   - copied over Key Remap plists to "/Users/dc/Application\ Support & private.xml
   - enabled config options
@@ -64,13 +64,31 @@ other setup:
   - `brew install --cocoa emacs`
   - `ln -s /usr/local/Cellar/emacs/24.3/Emacs.app /Applications/Emacs.app` #check version
   - `echo "alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'" >> .zsh/.zshrc` #now exists
-- Installed Emacs Packages
-  - ergoemacs-mode: `git clone https://code.googlecode.com/p/ergoemacs/ ~/.emacs.d` (should be fixed)
+- Installed Emacs Packages (most are not configured in init.el yet)
+  - ergoemacs-mode
   - rvm
   - rinari
   - ess
   - yasnippet
-  - installing these may not be necessary since i updated the Emacs Prelude submodule
+  - twittering-mode
+  - ack
+  - aes
+  - bundler
+  - bitly
+  - closure-mode
+  - cmake-mode
+  - coffee-mode
+  - db-pg
+  - flymake packages
+  - gnugo
+  - spaces
+  - sml-mode
+  - slime
+  - scss-mode
+  - sass-mode,
+  - ruby-test-mode
+  - ruby-mode
+  - ruby-compilation
 
 - configured Site-Specific Browsers:
   - Gmail (Voice, Calendar, Etc)
@@ -84,18 +102,18 @@ recommended key remap settings
 - Digits & Symbols:
   - ConsumerKeys => Digits
   - Digits => Symbols
-  - Uber+ConsumerKeys => ConsumerKeys 
+  - Uber+ConsumerKeys => ConsumerKeys
 - Function Key
   - Fn => PC Application Key (iTerm Only)
 - Unithumbability
   - Shift+Space => Underscore (if you don't like this, you don't like ruby)
   - Simultaneous Space => <{~"|}> (sweet!)
 
-## NOTE: 
+## NOTE:
 > i've recently noticed that every repo/submodule config in the project
 > is set up using SSH, instead of HTTPS.  So you will be able to clone
-> the repo, but you will will not be able to update the submodules, 
-> unless git/github have your SSH pub/private keys properly set up. 
+> the repo, but you will will not be able to update the submodules,
+> unless git/github have your SSH pub/private keys properly set up.
 > you'll notice in the git configs that everything is set up with
 > git@github.com, instead of https://github.com.
 
@@ -250,7 +268,7 @@ Later
 - bash_profile
 - bashrc
 - bash_logout (clear, history?)
-- /etc/bashrc 
+- /etc/bashrc
 - /etc/profile script?
 - /etc/profile.d folder? http://www.linuxfromscratch.org/blfs/view/6.3/postlfs/profile.html
 - /etc/dircolors? dircolors -p > /etc/dircolors
@@ -274,4 +292,3 @@ Later
 - link sublime profiles
 - best way to manage sublime packages?
 - manage sublime package preferences?
-

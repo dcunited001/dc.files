@@ -68,6 +68,19 @@ other things i needed to do to setup:
   - Rails (localhost:3000)
   - RspecWeb (localhost:4567)
 
+recommended key remap settings
+- Uber Key
+  - remap CMD_R to Uber Key
+- Digits & Symbols:
+  - ConsumerKeys => Digits
+  - Digits => Symbols
+  - Uber+ConsumerKeys => ConsumerKeys 
+- Function Key
+  - Fn => PC Application Key (iTerm Only)
+- Unithumbability
+  - Shift+Space => Underscore (if you don't like this, you don't like ruby)
+  - Simultaneous Space => <{~"|}> (sweet!)
+
 ## NOTE: 
 > i've recently noticed that every repo/submodule config in the project
 > is set up using SSH, instead of HTTPS.  So you will be able to clone

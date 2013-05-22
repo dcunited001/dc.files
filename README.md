@@ -6,12 +6,25 @@ working on centralizing some scripts and profile data.
 Install:
 ---------
 
+> Note: These are my personal dotfiles.  There's a ton of good resources and ideas in here, but don't expect everything to just work!  Besides, templates and dotfiles are only useful if you have a mental model of them in your head.  That badass emacs/vim config is worthless if you don't know it.  So read teh codez!!1 
+
 everything is contained in submodules:
-- git clone https://github.com/dcunited001/dc.files .files
-- cd ~/.files
-- git submodule init
-- git submodule update
-- bash init/mac.sh
+1. `git clone https://github.com/dcunited001/dc.files .files`
+1. `cd ~/.files`
+1. `git submodule init`
+1. `git submodule update`
+1. `bash init/mac.sh` #run init scripts - links most files - some errors =/
+1. `chsh -s /bin/zsh` #set zsh as default
+1. `cp ~/.files/zsh/zshenv.mac /etc/zshenv` # sets .zsh as $ZDOTDIR
+
+other things i needed to do to setup:
+- manually set up git config (you can use the erb in init/mac.sh)
+- installed Divvy
+- installed PCKeyboardHack & configured escape, caps & command_r
+- installed KeyRemapForMacbook & copied over Key Remap plists & private.xml
+- ran into problems with rake on init/mac.sh setup for janus.
+- copied over zsh fonts, colors & settings
+- link .zsh/prompt => ~/.files/zsh/prompt
 
 ## NOTE: 
 > i've recently noticed that every repo/submodule config in the project

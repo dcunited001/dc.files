@@ -6,7 +6,19 @@ working on centralizing some scripts and profile data.
 Install:
 ---------
 
+i recently reinstalled OSX onto a fresh SSD.  I configured first through pivotal-sprout, then merged in my configs.  I detail this process below.
+
 > Note: These are my personal dotfiles.  There's a ton of good resources and ideas in here, but don't expect everything to just work!  Besides, templates and dotfiles are only useful if you have a mental model of them in your head.  That badass emacs/vim config is worthless if you don't know it.  So read teh codez!!1 
+
+setup OSX with [https://github.com/pivotal-sprout/sprout-wrap](Pivotal Sprout):
+1. install git
+1. restore ssh keys
+1. `git clone git@github.com:pivotal-sprout/sprout-wrap sprout-wrap`
+1. `cd !$` #thank me later if you didn't know that one
+1. `sudo gem install bundler`
+1. `bundle`
+1. `bundle exec soloist`
+1. buy a beer for the guys at pivotal
 
 everything is contained in submodules:
 1. `git clone https://github.com/dcunited001/dc.files .files`
@@ -18,13 +30,31 @@ everything is contained in submodules:
 1. `cp ~/.files/zsh/zshenv.mac /etc/zshenv` # sets .zsh as $ZDOTDIR
 
 other things i needed to do to setup:
+- backed up all configs generated through pivotal sprout (bash,zsh,vim,etc)
 - manually set up git config (you can use the erb in init/mac.sh)
+- disabled most OSX shortcuts and (reconfigured through applications, quicksilver & key remap)
 - installed Divvy
-- installed PCKeyboardHack & configured escape, caps & command_r
-- installed KeyRemapForMacbook & copied over Key Remap plists & private.xml
+- installed PCKeyboardHack 
+  - configured escape, caps & command_r
+- installed KeyRemapForMacbook 
+  - copied over Key Remap plists to "/Users/dc/Application\ Support & private.xml
+  - enabled config options
+- installed Quicksilver and a few plugins
+  - configured Quicksilver with Shortcuts to open apps
 - ran into problems with rake on init/mac.sh setup for janus.
-- copied over zsh fonts, colors & settings
 - link .zsh/prompt => ~/.files/zsh/prompt
+- setup Agnoster theme for iTerm
+  - added Powerline Fonts with Font Book (fonts in .files/iterm/fonts)
+  - setup a powerline font in iTerm for the Agnoster ZSH Theme
+  - setup Solarize Color Theme for the Agnoster ZSH Theme
+  - setup iTerm prferences to load from ~/.files/iterm/com.googlecode.iterm.plist
+- installed emacs packages
+  - 
+- configured Site-Specific Browsers:
+  - Gmail (Voice, Calendar, Etc)
+  - Dev (Github, Airbrake, Semaphore, Heroku, Amazon, etc)
+  - Rails (localhost:3000)
+  - RspecWeb (localhost:4567)
 
 ## NOTE: 
 > i've recently noticed that every repo/submodule config in the project

@@ -7,10 +7,10 @@ Install:
 ---------
 
 everything is contained in submodules:
-- git clone https://github.com/dcunited001/dc.files
+- git clone https://github.com/dcunited001/dc.files .files
+- cd ~/.files
 - git submodule init
 - git submodule update
-- cd ~/.files
 - bash init/mac.sh
 
 ## NOTE: 

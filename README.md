@@ -29,7 +29,7 @@ everything is contained in submodules:
 1. `chsh -s /bin/zsh` #set zsh as default
 1. `cp ~/.files/zsh/zshenv.mac /etc/zshenv` # sets .zsh as $ZDOTDIR
 
-other things i needed to do to setup:
+other setup:
 - backed up all configs generated through pivotal sprout (bash,zsh,vim,etc)
 - manually set up git config (you can use the erb in init/mac.sh)
 - ran into problems with rake on .files/init/mac.sh setup for janus.
@@ -38,7 +38,7 @@ other things i needed to do to setup:
   - [PCKeyboardHack](https://pqrs.org/macosx/keyremap4macbook/pckeyboardhack.html.en)
   - [KeyRemap4MacBook](https://pqrs.org/macosx/keyremap4macbook/)
   - [Quicksilver](http://qsapp.com/)
-  - [Emacs for OSX](http://emacsformacosx.com/)
+  - [Emacs for OSX](http://emacsformacosx.com/) `brew install --cocoa emacs`
   - [Choosy](http://www.choosyosx.com/) ($12/trial)
   - [Divvy](http://mizage.com/divvy/) ($15/trial)
   - [FluidApps](http://fluidapp.com/) ($5/trial) (mostly using my create-ssb function now, ~/.files/func.mac.sh)
@@ -61,7 +61,17 @@ other things i needed to do to setup:
   - setup Solarize Color Theme for the Agnoster ZSH Theme
   - setup iTerm prferences to load from ~/.files/iterm/com.googlecode.iterm.plist
 - Configured Emacs
-  - 
+  - `brew install --cocoa emacs`
+  - `ln -s /usr/local/Cellar/emacs/24.3/Emacs.app /Applications/Emacs.app` #check version
+  - `echo "alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'" >> .zsh/.zshrc` #now exists
+- Installed Emacs Packages
+  - ergoemacs-mode: `git clone https://code.googlecode.com/p/ergoemacs/ ~/.emacs.d` (should be fixed)
+  - rvm
+  - rinari
+  - ess
+  - yasnippet
+  - installing these may not be necessary since i updated the Emacs Prelude submodule
+
 - configured Site-Specific Browsers:
   - Gmail (Voice, Calendar, Etc)
   - Dev (Github, Airbrake, Semaphore, Heroku, Amazon, etc)

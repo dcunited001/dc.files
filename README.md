@@ -48,6 +48,7 @@ other things i needed to do to setup:
   - Escape => Command R
   - Command R => Command L
 - Configured KeyRemapForMacbook 
+  - `cp ~/.files/kbd/KeyRemap4Macbook/*.xml ~/Library/Application\ Support/KeyRemap4MacBook/`
   - copied over Key Remap plists to "/Users/dc/Application\ Support & private.xml
   - enabled config options
 - Configured Quicksilver and a few plugins

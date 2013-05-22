@@ -32,23 +32,34 @@ everything is contained in submodules:
 other things i needed to do to setup:
 - backed up all configs generated through pivotal sprout (bash,zsh,vim,etc)
 - manually set up git config (you can use the erb in init/mac.sh)
+- ran into problems with rake on .files/init/mac.sh setup for janus.
 - disabled most OSX shortcuts and (reconfigured through applications, quicksilver & key remap)
-- installed Divvy
-- installed PCKeyboardHack 
-  - configured escape, caps & command_r
-- installed KeyRemapForMacbook 
+- installed misc apps:
+  - [PCKeyboardHack](https://pqrs.org/macosx/keyremap4macbook/pckeyboardhack.html.en)
+  - [KeyRemap4MacBook](https://pqrs.org/macosx/keyremap4macbook/)
+  - [Quicksilver](http://qsapp.com/)
+  - [Emacs for OSX](http://emacsformacosx.com/)
+  - [Choosy](http://www.choosyosx.com/) ($12/trial)
+  - [Divvy](http://mizage.com/divvy/) ($15/trial)
+  - [FluidApps](http://fluidapp.com/) ($5/trial) (mostly using my create-ssb function now, ~/.files/func.mac.sh)
+  - [Paragon ExtFS Drivers for OSX](http://www.paragon-software.com/home/extfs-mac/) ($40/trial)
+- Configured PCKeyboardHack 
+  - Caps => Escape
+  - Escape => Command R
+  - Command R => Command L
+- Configured KeyRemapForMacbook 
   - copied over Key Remap plists to "/Users/dc/Application\ Support & private.xml
   - enabled config options
-- installed Quicksilver and a few plugins
+- Configured Quicksilver and a few plugins
   - configured Quicksilver with Shortcuts to open apps
-- ran into problems with rake on init/mac.sh setup for janus.
+- Configured Choosy
 - link .zsh/prompt => ~/.files/zsh/prompt
 - setup Agnoster theme for iTerm
   - added Powerline Fonts with Font Book (fonts in .files/iterm/fonts)
   - setup a powerline font in iTerm for the Agnoster ZSH Theme
   - setup Solarize Color Theme for the Agnoster ZSH Theme
   - setup iTerm prferences to load from ~/.files/iterm/com.googlecode.iterm.plist
-- installed emacs packages
+- Configured Emacs
   - 
 - configured Site-Specific Browsers:
   - Gmail (Voice, Calendar, Etc)
@@ -77,7 +88,12 @@ TODO:
 - create osx repo and add defaults scripts
 - move automator repo to osx
 
+### tasks
+- [X] complete
+- [ ] incomplete
+
 ### general
+- turn todo lists into Github Markdown Tasks
 - consolidate folders inside ~/.files/
 - licenses?
 - add function to list modules?

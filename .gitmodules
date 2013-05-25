@@ -49,3 +49,6 @@
 [submodule "rb"]
 	path = rb
 	url = git@github.com:dcunited001/dc.files.rb
+[submodule "irc"]
+	path = irc
+	url = git@github.com:dcunited001/dc.files.irc

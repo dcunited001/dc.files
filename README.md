@@ -147,7 +147,7 @@ TODO:
 ### aliases
 - turn OSX ssh on/off for user
 - turn OSX filesharing on/off for user?
-
+- alias to commit changes to dc.files git modules & auto commit dc.files parent repo
 ### osx
 - ichat plugin for campfire (http://g-off.github.com/Campfire/)
 - osx init script?

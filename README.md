@@ -143,6 +143,7 @@ TODO:
 - manage confs for different platforms in branches?
 - gitignores (necessary?)
 - add .hushlogin?
+- convert to chef repos
 
 ### aliases
 - turn OSX ssh on/off for user

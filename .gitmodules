@@ -52,3 +52,6 @@
 [submodule "irc"]
 	path = irc
 	url = git@github.com:dcunited001/dc.files.irc
+[submodule "org"]
+	path = org
+	url = git@bitbucket.org:dcunited001/dc.files.org

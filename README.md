@@ -6,11 +6,11 @@ working on centralizing some scripts and profile data.
 Ideas
 -----
 
-I'm thinking about breaking dc.files and each submodule into branches for each platform, 
+I'm thinking about breaking dc.files and each submodule into branches for each platform,
 instead of having different files for each platform.  So, for most submodules like alias/init/etc,
 all of the platform-specific vars would be abstracted into a single file which is ran beforehand.
 Then the vars are used where they can be and Platform-Specific aliases/functions can be sourced in
-their own files.  
+their own files.
 
 I would also like to add some kind of dependency-management, so you can load in just the functions/etc
 that you need.  But there's got to be another tool to help manage these things.
@@ -120,6 +120,46 @@ recommended key remap settings
 - Unithumbability
   - Shift+Space => Underscore (if you don't like this, you don't like ruby)
   - Simultaneous Space => <{~"|}> (sweet!)
+
+Ubuntu **13.04** Install Notes:
+----------
+
+NVidia Drivers - *applicable to laptops both integrated graphics and a GPU*
+- `sudo apt-get install build-essential linux-source linux-headers`
+  - i had to do linux-headers-\`uname -r\` for 13.04
+- `sudo apt-get install nvidia-current`
+  - installs nvidia drivers, installation passed, config failed bc nouveau drivers were already there
+- `sudo /sbin/lsmod | grep nvidia`
+  - check whether the nvidia drivers were configured to be used, they weren't
+- `sudo depmod -a`
+  - ensure dependencies are satisfied
+- `sudo modprobe nvidia_current`
+- after this point, i believe a restart kicked in the nvidia drivers
+
+Dependencies (using sudo apt-get install)
+- build-essential linux-source linux-headers
+- autoconf git curl perl tmux
+- guake terminator terminology
+- compizconfig-settings-manager
+- gawk libreadline6-dev zlib1g-dev libssl-dev
+- libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev
+- libgdbm-dev libncurses5-dev libtool bison libffi
+
+Dotfiles
+
+1. clone repo
+1. `git submodule init`
+1. `git submodule update`
+1. ensure curl, git, ruby & perl are installed (dep-checks fail if not)
+1. change username & home path in `init/support`
+1. `bash init/ubu.sh`
+  - setup-emacs
+  - setup-kbd
+  - setup-ryanb
+  - setup-omz
+
+1. `chsh -s /bin/zsh` #set zsh as default
+1. `cp ~/.files/zsh/zshenv.mac /etc/zshenv` # sets .zsh as $ZDOTDIR
 
 ## NOTE:
 > i've recently noticed that every repo/submodule config in the project

@@ -1,0 +1,75 @@
+# -*- coding: utf-8 -*-
+* Header Information                                               :noexport:
+#+TITLE: dc.files todo
+#+AUTHOR:    David Conner
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+# OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+# OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+# INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+# EXPORT_SELECT_TAGS: export
+# EXPORT_EXCLUDE_TAGS: noexport
+# LINK_UP:
+# LINK_HOME:
+# XSLT:
+
+* dc.files todo:
+
+
+** alias
+*** TODO: add apali anchors
+*** TODO: move functions and aliases to their relevant repos or to files
+*** TODO:
+
+** bash
+
+- TODO: necesary repo?
+
+** emacs
+
+- TODO: add apali anchors
+
+** gitconf
+
+- TODO: move to .git?
+
+** init
+
+- fdsa
+
+** irc
+
+
+** iterm
+
+
+** kbd
+
+- TODO: add anchors to zsh
+- TODO: add anchors to emacs
+
+** org
+
+- TODO: setup plugins
+- TODO: learn & tweak keybindings
+- TODO: move existing notes
+
+** osx
+
+
+** rb
+
+
+** subl
+
+
+** tmux
+
+
+** vim
+
+
+** zsh

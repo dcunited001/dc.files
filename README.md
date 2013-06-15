@@ -125,6 +125,7 @@ Ubuntu **13.04** Install Notes:
 ----------
 
 NVidia Drivers - *applicable to laptops both integrated graphics and a GPU*
+
 - `sudo apt-get install build-essential linux-source linux-headers`
   - i had to do linux-headers-\`uname -r\` for 13.04
 - `sudo apt-get install nvidia-current`
@@ -137,9 +138,12 @@ NVidia Drivers - *applicable to laptops both integrated graphics and a GPU*
 - after this point, i believe a restart kicked in the nvidia drivers
 
 Dependencies (using sudo apt-get install)
+
 - build-essential linux-source linux-headers
-- autoconf git curl perl tmux
+- autoconf vim git curl perl tmux
 - guake terminator terminology
+  - terminology requires a ppa repo to be added
+  - looks cool, but isnt worth it
 - compizconfig-settings-manager
 - gawk libreadline6-dev zlib1g-dev libssl-dev
 - libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev
@@ -157,9 +161,23 @@ Dotfiles
   - setup-kbd
   - setup-ryanb
   - setup-omz
-
 1. `chsh -s /bin/zsh` #set zsh as default
 1. `cp ~/.files/zsh/zshenv.mac /etc/zshenv` # sets .zsh as $ZDOTDIR
+
+Keyboard Layout
+
+> Note the keyboard layouts are hardware specific and this one is for an Asus UL50vt.
+
+1. `sudo cp ~/.files/kbd/Xmodmap.ubu /etc/X11/xinit/Xmodmaprc`
+1. `sudo vim /etc/X11/xinit/xinitrc`
+  - add `xmodmap /etc/X11/xinit/Xmodmaprc` to this file
+1. restart
+
+Terminal & Emacs
+
+- `mkdir ~/.fonts`
+- `cp ~/.files/iterm/fonts/* ~/.fonts`
+- set default shell & set terminal to run a login shell, if u want
 
 ## NOTE:
 > i've recently noticed that every repo/submodule config in the project

@@ -3,7 +3,19 @@ dc.files
 
 working on centralizing some scripts and profile data.
 
-Install:
+Ideas
+-----
+
+I'm thinking about breaking dc.files and each submodule into branches for each platform, 
+instead of having different files for each platform.  So, for most submodules like alias/init/etc,
+all of the platform-specific vars would be abstracted into a single file which is ran beforehand.
+Then the vars are used where they can be and Platform-Specific aliases/functions can be sourced in
+their own files.  
+
+I would also like to add some kind of dependency-management, so you can load in just the functions/etc
+that you need.  But there's got to be another tool to help manage these things.
+
+OSX Install Notes:
 ---------
 
 i recently reinstalled OSX onto a fresh SSD.  I configured first through pivotal-sprout, then merged in my configs.  I detail this process below.

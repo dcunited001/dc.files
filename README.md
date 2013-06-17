@@ -168,10 +168,16 @@ Keyboard Layout
 
 > Note the keyboard layouts are hardware specific and this one is for an Asus UL50vt.
 
+1. `echo "xmodmap ~/.Xmodmap" >> ~/.xinitrc`
+1. restart or logout/login or `xmodmap ~/.Xmodmap`
+
+You can set up Xmodmap to load for all users, but i was running into some issues:
 1. `sudo cp ~/.files/kbd/Xmodmap.ubu /etc/X11/xinit/Xmodmaprc`
 1. `sudo vim /etc/X11/xinit/xinitrc`
   - add `xmodmap /etc/X11/xinit/Xmodmaprc` to this file
 1. restart
+  - then find out that this doesn't work hmmmm..
+1. `xmodmap ~/Xmodmap` after logging in
 
 Terminal & Emacs
 

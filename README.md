@@ -101,6 +101,7 @@ other setup:
   - ruby-test-mode
   - ruby-mode
   - ruby-compilation
+  - json
 
 - configured Site-Specific Browsers:
   - Gmail (Voice, Calendar, Etc)
@@ -184,6 +185,15 @@ Terminal & Emacs
 - `mkdir ~/.fonts`
 - `cp ~/.files/iterm/fonts/* ~/.fonts`
 - set default shell & set terminal to run a login shell, if u want
+- `rm ~/.files/emacs/support/bindkeys.el`
+- `ln -s ~/.files/emacs/support/bindkeys.el ~/.files/kbd/bindkeys.emacs.mac`
+  - i'm working on putting most of the config into json
+  - also probably moving to use branches for separate platforms
+- install the emacs packages listed above.
+  - the init-script will crash until you do
+  - `emacs --debug-init .` until it passes
+  - `M-x list-packages` to show packages, pick the right ones
+  - shift-left/up/down/right to change buffers
 
 ## NOTE:
 > i've recently noticed that every repo/submodule config in the project

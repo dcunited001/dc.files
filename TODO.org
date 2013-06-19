@@ -73,3 +73,4 @@
 
 
 ** zsh
+- TODO: securely load env vars with `security`

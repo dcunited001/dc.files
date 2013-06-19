@@ -194,7 +194,9 @@ Terminal & Emacs
   - `emacs --debug-init .` until it passes
   - `M-x list-packages` to show packages, pick the right ones
   - shift-left/up/down/right to change buffers
-
+- install sshmenu
+  - `sudo apt-get install sshmenu`
+  - `git clone git@github.com:jowolf/sshmenu`
 ## NOTE:
 > i've recently noticed that every repo/submodule config in the project
 > is set up using SSH, instead of HTTPS.  So you will be able to clone

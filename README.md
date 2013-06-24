@@ -142,13 +142,14 @@ Dependencies (using sudo apt-get install)
 
 - build-essential linux-source linux-headers
 - autoconf vim git curl perl tmux
-- guake terminator terminology
+- guake terminator terminology 
   - terminology requires a ppa repo to be added
   - looks cool, but isnt worth it
 - compizconfig-settings-manager
 - gawk libreadline6-dev zlib1g-dev libssl-dev
 - libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev
 - libgdbm-dev libncurses5-dev libtool bison libffi
+- launchy
 
 Dotfiles
 
@@ -180,6 +181,7 @@ You can set up Xmodmap to load for all users, but i was running into some issues
   - then find out that this doesn't work hmmmm..
 1. `xmodmap ~/Xmodmap` after logging in
 
+
 Terminal & Emacs
 
 - `mkdir ~/.fonts`
@@ -197,6 +199,7 @@ Terminal & Emacs
 - install sshmenu
   - `sudo apt-get install sshmenu`
   - `git clone git@github.com:jowolf/sshmenu`
+
 ## NOTE:
 > i've recently noticed that every repo/submodule config in the project
 > is set up using SSH, instead of HTTPS.  So you will be able to clone

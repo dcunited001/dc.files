@@ -55,3 +55,6 @@
 [submodule "org"]
 	path = org
 	url = git@bitbucket.org:dcunited001/dc.files.org
+[submodule "sec"]
+	path = sec
+	url = git@bitbucket.org:dcunited001/dc.files.sec

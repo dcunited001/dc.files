@@ -61,3 +61,6 @@
 [submodule "powerline-fonts"]
 	path = powerline-fonts
 	url = git@github.com:Lokaltog/powerline-fonts
+[submodule "powerline"]
+	path = powerline
+	url = git@github.com:dcunited001/dc.files.powerline

@@ -64,3 +64,6 @@
 [submodule "powerline"]
 	path = powerline
 	url = git@github.com:dcunited001/dc.files.powerline
+[submodule "iTerm2-Color-Schemes"]
+	path = iTerm2-Color-Schemes
+	url = https://github.com/mbadolato/iTerm2-Color-Schemes

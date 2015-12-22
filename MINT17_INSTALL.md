@@ -22,6 +22,7 @@ the past, but I've found that getting it to reliably load and function on startu
 
 I found some `xkb` articles I hadn't seen before.  I last looked in 2013, so I don't know how I missed these. 
 
+
 - [XKB config](http://www.dotkam.com/2007/06/25/custom-keyboard-layout-in-ubuntu-or-just-linux-2/)
 - [Changing Keyboard Layouts with XKB](http://hack.org/mc/writings/xkb.html)
 - [Keyboard Config in Xorg (Arch Linux)](	https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg)
@@ -152,13 +153,26 @@ too much time on this. I'm hoping to hurry up and get to this computer vision pr
 - so i just reverted to the agnoster zsh theme
     - python's still dicked up but i think i can deal with it.
 
+### fonts
+
+```
+sudo apt-get install ttf-symbola
+```
+
+### terminal app
+
+TODO: try gnome terminator
+
 ### misc hardware issues
 
 #### Brightness Adjustment Keys
 
 for the most part, i didn't have any problems with my macbook pro 2013
-- i did need to configure backlight pci keys 
+- i did need to configure backlight pci keys
 - simple `setpci -v -H1 -s 00:01.00 BRIDGE_CONTROL=0`
+
+
+... these no longer work.  brightness levels appear to adjust, but the actual brightness of the screen does not.  yay.  oh well.
 
 #### Mac OSX Function & Media Keys
 
@@ -172,7 +186,36 @@ This is described in more detail on [this S/O question](http://unix.stackexchang
 echo 2 > /sys/module/hid_apple/parameters/fnmode
 ```
 
-### power management tools
+#### Built-in Webcam
+
+The webcam didn't work out of the box.  I tried messing around in OBS to find it, but
+the device wasn't being found.  `sudo apt-get install cheese` and `cheese` to 
+troubleshoot.
+
+Looked at a lot of information on the iSight camera.  It seems like i may need access to the HFS partition, which i didn't realize was even possible.  Actually it's stupid to think that an HFS+ partition from OSX would ever be inaccessible from Linux, but I was beyond certain that it was.  Dammit, i wish that when i did stupid shit like bitch about HFS+ access in Linux, there was someone right beside me who would be there to smack my ass before i wasted hours on a problem that was never a problem at all.
+
+oh, but it's soooo easy to get [iSight webcam access](https://help.ubuntu.com/community/MactelSupportTeam/AppleiSight).  
+if you can mount the HFS+ filesystem.  mine's encrypted.  this seems
+to be causing some problems.
+
+#### Getting access to HFS
+
+The following command did not work.  This hardware compatibility thing is getting to be more of a problem then I thought.
+
+```
+sudo mount -t hfsplus /dev/sda2 /media/machd
+```
+
+I think this is not working bc my OSX partition is encrypted... i think?  I hope that's why but wait ... that still sucks.  Now i have to figure this shit out.  Guys, I just want to stream on OBS.  Thought I was going to be able to do that at 10:00pm.  Now it's 12:00am.
+
+Yeh ... encyrpted HFS+ partition [just doesn't look fun at all](https://t.co/Yg83OExgjG).
+
+nope.  nope. definitely not.
+
+## FUCK IT, GUESS I"M NOT_STREAMING TONIGHT"
+
+
+#### power management tools
 
 in the short time that i've been using linux mint 17
 - and running a **minimal** number of apps
@@ -217,6 +260,10 @@ sudo apt-get install
 sudo tlp start
 ```
 
+### Livestreaming/OBS
+
+Basically, followed the instructions at [Livecoding.tv's Linux Guide](https://www.livecoding.tv/obsguidelinux/).  Fairly straightforward to get OBS running.  Started it up with `obs`.  But the webcam didn't work.  Described in the misc hardware issues section above.
+
 ### install tensorflow
 
 
@@ -248,8 +295,7 @@ sudo tlp start
     - to ensure that i'm pulling docker from the right repo's to get `docker 1.19`
 
 
-
-### misc todo
+### misc todo:
 - keyboard config
 - launcher config (gnome do, synergisticafdsafoewa?)
 

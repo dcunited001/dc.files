@@ -194,7 +194,7 @@ troubleshoot.
 
 Looked at a lot of information on the iSight camera.  It seems like i may need access to the HFS partition, which i didn't realize was even possible.  Actually it's stupid to think that an HFS+ partition from OSX would ever be inaccessible from Linux, but I was beyond certain that it was.  Dammit, i wish that when i did stupid shit like bitch about HFS+ access in Linux, there was someone right beside me who would be there to smack my ass before i wasted hours on a problem that was never a problem at all.
 
-oh, but it's soooo easy to get [iSight webcam access](https://help.ubuntu.com/community/MactelSupportTeam/AppleiSight).  
+oh, but it's soooo easy to get [iSight webcam access](https://help.ubuntu.com/community/MactelSupportTeam/AppleiSight).
 if you can mount the HFS+ filesystem.  mine's encrypted.  this seems
 to be causing some problems.
 
@@ -278,12 +278,22 @@ Basically, followed the instructions at [Livecoding.tv's Linux Guide](https://ww
 
 - needed to download and set this up
 - fairly straightforward, no dependencies (yay!)
+- after running dpkg on the cuda deb, i ran apt-get update
+- then `sudo apt-get install cuda` ended up installing 7.5
+  - not sure this will work with my graphics card compute capability (3.0)
+  - but we'll see
 
 #### cuDNN 6.5
 
 - nvidia requires registration?  wtf lol
   - two days later, i'm still waiting for this
 - where is 6.5? i only see cuDNN 3.0
+- finally. i'm approved for cuDNN
+  - trying to figure out which cuDNN version i need.
+    - both 3 and 4 require CUDA compute capability 3.0+
+    - going to with 4
+- downloaded and unzipped
+  - moved the headers and .so's to the /usr/local/cuda folders
 
 #### install docker
 
@@ -293,6 +303,9 @@ Basically, followed the instructions at [Livecoding.tv's Linux Guide](https://ww
     - i don't want to mess with gpu stuff in a container if i'm not going on the most recent version of docker
 - mostly, i just needed to follow the [docker install guide for ubuntu](https://docs.docker.com/engine/installation/ubuntulinux/)
     - to ensure that i'm pulling docker from the right repo's to get `docker 1.19`
+
+#### installing tensorflow docker images
+
 
 
 ### misc todo:

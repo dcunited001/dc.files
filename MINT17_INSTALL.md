@@ -35,14 +35,17 @@ The one piece of behavior from Karabiner that I know to be nigh-impossible to ge
 are the simultaneous keypresses.  I can simulatneously press the arrow keys in lieu of `home` and `end`.
 I can also get easier access to chars like `< > { } ~` without having to hit a modifier key, which is kinda nice.
 I don't use these "key chords" very often, except for angle brackets.  Not the same thing as emacs "key chords" of course. 
-These are like true chords.   
+These are like true chords.
 
-> There is one limitation to the Karabiner software: the ability for one application to intercept 
-> and replace a modifier key to be used as a different modifier key in another application.  Such a feature would
-> be impossible, but it'd allow me to use this awesome pedal hardware, so i can define modifier keys for my feet.
->
-> Yes, I actually bought one of these pedals just for that.  And no, there's no way to configure it to work how I want.
-> Trust me, I spent hours trying to get it to work ... womp womp =[
+> There is one limitation to the Karabiner software: the ability for
+> one application to intercept and replace a modifier key to be used
+> as a different modifier key in another application.  Such a feature
+> would be impossible, but it'd allow me to use this awesome pedal
+> hardware, so i can define modifier keys for my feet.  
+> 
+> Yes, I actually bought one of these pedals just for that.  And no,
+> there's no way to configure it to work how I want.  Trust me, I
+> spent hours trying to get it to work ... womp womp =[
 
 #### PasswordSafe for Linux
 
@@ -75,7 +78,12 @@ Maybe [Synapse](https://code.launchpad.net/synapse-project)
 
 #### Other applications
 
-...
+Installed Vivaldi browser, OBS
+
+Facebook in chrome asked to integrate with Mint/Ubuntu's notification system.  This is not
+something i'd normally enabled, but i was intrigued seeing this is an OS like Mint/Ubuntu.
+So I enabled it.  I'll likely eventually disable it, as it makes me uncomfortable.  I want
+my browser sessions to end at the browser.  Sorry.
 
 ### Getting Linux Installed
 
@@ -155,9 +163,16 @@ too much time on this. I'm hoping to hurry up and get to this computer vision pr
 
 ### fonts
 
+Installing the `Symbola` font gave me emoji text in ubuntu/mint. 
+
 ```
 sudo apt-get install ttf-symbola
 ```
+
+This allows emoji to be rendered as text in applications, like emacs
+and in the text-entry for chrome.  You don't actually have to set this
+as your default font.  Ubuntu has font fallback, which searches
+through its library to find a font which contains a missing char
 
 ### terminal app
 

@@ -397,9 +397,39 @@ to rebuild again.
 --     packages path:               lib/python2.7/dist-packages
 ```
 
+of course, it fails building the GPU examples...  . . . finally got it
+to work, disabled building the examples.
 
-of course, it fails building the GPU examples...
+i can read images in, but can't display anything **womp womp**
+... "GUI??1 i don't need no stinkin' GUI!!" - direct quote from 2
+hours ago
 
+trying again with GUI.  searched from qt5 opengl package.  hopefully
+qt gui doesn't !@#$ it up this time.  i guess i'll find out in 30
+minutes when the build finally breaks.
+
+```shell
+cmake \
+ -DCMAKE_BUILD_TYPE=RELEASE \
+ -DCMAKE_INSTALL_PREFIX=/usr/local \
+ -DWITH_TBB=ON \
+ -DBUILD_NEW_PYTHON_SUPPORT=ON \
+ -DWITH_V4L=OFF \
+ -DINSTALL_C_EXAMPLES=OFF \
+ -DINSTALL_PYTHON_EXAMPLES=OFF \
+ -DBUILD_EXAMPLES=OFF \
+ -DWITH_OPENGL=ON \
+ -DMAKE_VERBOSE_MAKEFILE=ON \
+ -DWITH_FFMPEG=ON \
+ -DCUDA_ARCH_BIN=3.0 \
+ -DWITH_QT=ON \
+ -DWITH_GTK=OFF \
+ -DWITH_VTK=OFF .. > cmake.log
+```
+
+ugh... finally, that did it.  i can open images and stuff.  must have
+had the wrong version of qt5-opengl (probably qt4-opengl from a
+copy&paste...)
 
 ### misc todo:
 - keyboard config

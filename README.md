@@ -3,6 +3,21 @@ dc.files
 
 working on centralizing some scripts and profile data.
 
+I'm hoping to restructure these dotfiles soon and, most crucial, update
+the mess of documentation here.  In the meantime, check out the [awesome
+dotfiles](https://github.com/webpro/awesome-dotfiles) and [github
+dotfiles](https://dotfiles.github.io/) repo's for ideas on how to manage
+your own dotfiles.
+
+I like some of the ideas i used to organize mine -- like using git
+submodules to organize them.  And now, in 2015, i'm seeing a ton more
+of that than I did in 2012.  I'm hoping to find a tool that allows me to
+manage the changes to dotfiles in submodules much easier than it is now.
+As they are organized now, managing changes to dotfile modules for 
+multiple platforms and especially pushing
+distributing out the changes to my multiple platforms is really time
+consuming.
+
 Ideas
 -----
 

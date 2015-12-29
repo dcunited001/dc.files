@@ -64,7 +64,9 @@ SourceTree is a great Git client for OSX/Windows with a GUI.  No idea why a cros
 but is available on both windows and mac.  That's strange but I'm sure there's a good reason for it.
 
 There's a beta app for a new GUI Git client called **Git Kraken**.  It's completely cross platform.  I hope
-to be able to use it.  Otherwise, I'm going to look at smartgit, gitg, giggle, git-cola.  
+to be able to use it.  Otherwise, I'm going to look at smartgit, gitg, giggle, git-cola. 
+
+Sweet, i got approved for the Git Kraken Beta. 
 
 #### Quicksilver/Alfred
 
@@ -73,8 +75,25 @@ applications.  So I never have to hit `alt-tab`.  I know, I know, Quicksilver an
 But this is the main feature I want, since by using it, I never have to retain the state of the OS user interface in my limited
 short term memory.  It helps, a ton.
 
-I've tried Gnome DO in the past, which worked pretty well, but I'd like to try something else.  
-Maybe [Synapse](https://code.launchpad.net/synapse-project)
+I've tried Gnome DO in the past, which worked pretty well, but I'd like to try something else. 
+Maybe [Synapse](https://code.launchpad.net/synapse-project).  Yeh, going to try Synapse.
+
+However, upon reading [this article](http://www.noobslab.com/2015/02/synapse-launcher-new-version-released.html)
+and hearing that Synapse works by logging user activity and searching/indexing those logs, I'm
+not sure I would want to use it.  I'll try it out i guess. 
+
+Also, it installs a language called `vala`.  Weird.  Were other
+languages not good enough? A little-known lanuage that, with the
+Synapse app, accesses your user activity logs and has it's own Virtual
+Machine according to the wiki page:
+
+> Rather than compiling directly to machine code or assembly language,
+> it compiles to a higher level intermediate language.
+
+Sketchy. No offense. Not saying there's a plot afoot here.  I'm just saying ... and
+i feel bad saying it too.  It's not like writing your own language is easy or anything.
+
+Just going with Gnome Do for now.
 
 #### Other applications
 
@@ -119,6 +138,9 @@ Moving on...
 So later, i had ethernet access and everything took 5 minutes to install like it's supposed to. I had 
 some issues with the hidpi resolution being way to high, since the MBP 2013 screen is retina.  I needed
 to go to `Preferences > General` to get Cinnamon to adjust UI elements for. 
+
+Note: retina-display resolution became a problem once I wanted to use the GPU for computing.  Over 700GB of GPU RAM are in use at all times on my system.  Tensorflow blows up if it tries to allocate more memory than is available.  Livestreaming over OBS requires even more memory.
+
 
 >  Things that are awesome: apparently shitty wifi drivers are bundled with the Linux Mint ISO and *may not actually require internet*.
 >  I may just be an idiot.
@@ -277,7 +299,18 @@ sudo tlp start
 
 ### Livestreaming/OBS
 
-Basically, followed the instructions at [Livecoding.tv's Linux Guide](https://www.livecoding.tv/obsguidelinux/).  Fairly straightforward to get OBS running.  Started it up with `obs`.  But the webcam didn't work.  Described in the misc hardware issues section above.
+Basically, followed the instructions at
+[Livecoding.tv's Linux Guide](https://www.livecoding.tv/obsguidelinux/).
+Fairly straightforward to get OBS running.  Started it up with `obs`.
+But the webcam didn't work.  Described in the misc hardware issues
+section above.
+
+
+... except there's lots of tearing from desktop streaming....
+
+need to build obs-studio from source... which requires ffmpeg to be
+built from source ... since ubuntu 14.04 doesn't include proper
+ffmpeg.......
 
 ### install tensorflow
 
@@ -323,9 +356,59 @@ Basically, followed the instructions at [Livecoding.tv's Linux Guide](https://ww
 
 
 
+### Installing OpenCV with GPU
+
+wow what a pain in the ass.  QtOpenGL kept fucking it up.  eventually
+needed to install without GUI `-DWITH_QT=NO -DWITH_GDK=NO
+-DWITH_VTK=NO`
+
+[OpenCV build option reference here](https://github.com/Itseez/opencv/blob/master/CMakeLists.txt)
+
+build options below.  takes about 30 minutes. i should probably have
+set some of this stuff off.
+
+```shell
+cmake \
+ -DCMAKE_BUILD_TYPE=RELEASE \
+ -DCMAKE_INSTALL_PREFIX=/usr/local \
+ -DWITH_TBB=ON \
+ -DBUILD_NEW_PYTHON_SUPPORT=ON \
+ -DWITH_V4L=OFF \
+ -DINSTALL_C_EXAMPLES=OFF \
+ -DINSTALL_PYTHON_EXAMPLES=OFF \
+ -DBUILD_EXAMPLES=OFF \
+ -DWITH_OPENGL=ON \
+ -DMAKE_VERBOSE_MAKEFILE=ON \
+ -DWITH_FFMPEG=OFF \
+ -DCUDA_ARCH_BIN=3.0 \
+ -DWITH_QT=OFF \
+ -DWITH_GTK=OFF \
+ -DWITH_VTK=OFF .. > cmake.log
+```
+
+built without python libraries: see cmake.log below. hope i don't have
+to rebuild again.
+
+```
+--   Python 2:
+--     Interpreter:                 /usr/bin/python2.7 (ver 2.7.6)
+--     Libraries:                   NO
+--     numpy:                       /usr/local/lib/python2.7/dist-packages/numpy/core/include (ver 1.10.2)
+--     packages path:               lib/python2.7/dist-packages
+```
+
+
+of course, it fails building the GPU examples...
+
+
 ### misc todo:
 - keyboard config
 - launcher config (gnome do, synergisticafdsafoewa?)
+- identify files in .config/* to port to dotfiles
+  - e.g. terminator in .config/terminator/config
+- fix gnome-do (turned off as a startup service)
+  - the application seems to start up, 
+  - but then process dies after one or two invocations
 
 ### emacs notes:
 - undo-tree: hit q to complete undo's
@@ -335,5 +418,6 @@ Basically, followed the instructions at [Livecoding.tv's Linux Guide](https://ww
 - using magit
 
 ### emacs todo:
-
-
+- setup thesaurus
+- figure out a system of saving workspaces
+- setup ein (emacs-ipython-notebook)

@@ -97,7 +97,49 @@ Just going with Gnome Do for now.
 
 #### Other applications
 
-Installed Vivaldi browser, OBS
+**Hex Editor**: wxHexEditor.  Cross platform hex editor.
+
+```
+# easy
+sudo apt-get install wxhexeditor
+```
+
+**IRC: weechat**.  I like my irc in a terminal, with miami vice 80s colors
+
+```
+sudo apt-get install weechat weechat-plugins # ..... JUST KIDDING
+```
+
+It could be that simple, folks.  but its not.  not only does ubuntu offer an
+old version through the debian package manager, but it also comes bundled with linux
+mint? i think?  which is nice, but it's and old version, so the config files break.
+which isn't so bad, except the old version overwrites your config files on install. yay!
+so then you spend a ton of time figuring out what you need and what you don't before
+you finally realize: oh even though i removed it from apt-get, it's still on my system
+and it's way old, this isn't a new version that's breaking my shit, it's an old one....
+
+## so yeh: time wasted, lesson-learned: 
+
+> just compile everything from source
+
+... oh, and just run everything on a geeked out arch linux distro, terminal only,
+with maybe an ncurses-only gui.  maybe.  
+
+> on the flipside, the GUI IRC client bundled with Linux Mint looked interesting.
+> I almost used it, except, again ... 80s miami vice colors make me look liek a l33t
+> bell labs hacker. 
+
+and also, text interfaces are almost more fun to configure.
+configs are almost always self-explanatory and portable. for most
+GUI apps, a portable human-readable config file is a second thought. 
+this is actually the exception and not the rule with linux, though. kudos.
+
+**OBS**
+
+my iSight webcam don't work without a struggle.  did i mention that yet?  i think i did
+but i can't remember. lulz.
+
+**Installed Vivaldi browser**
 
 Facebook in chrome asked to integrate with Mint/Ubuntu's notification system.  This is not
 something i'd normally enabled, but i was intrigued seeing this is an OS like Mint/Ubuntu.

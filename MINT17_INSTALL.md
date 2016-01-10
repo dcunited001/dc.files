@@ -95,6 +95,102 @@ i feel bad saying it too.  It's not like writing your own language is easy or an
 
 Just going with Gnome Do for now.
 
+#### IRC (Weechat)
+
+**IRC: weechat**.  I like my irc in a terminal, with miami vice 80s colors
+
+```
+sudo apt-get install weechat weechat-plugins # ..... JUST KIDDING
+```
+
+#### XMPP Chat Service (Profanity)
+
+Profanity isn't available through the Ubuntu 14.04 standard package
+lists.  To install, you'll need to pull it down from git (or download
+the tarball from [Profanity's homepage](https://profanity.im)) and
+build from source.
+
+You'll need to get `libncursesw5-dev`. If you don't have it,
+`profanity` will build, but won't run due to wide-character issues.
+
+```shell
+sudo apt-get install libncursesw5-dev
+```
+
+You'll also need to install either `libmesode` or `libstrophe0` and
+`libstrophe-dev`, none of which are available via debian's 14.04
+Ubuntu package managers.  You'll have to build these from source too.
+
+Try apt-get first, as these packages are listed on launchpad, so they
+may work on some debians. Though, really, it's better if you compile all
+your software.  It takes a lot longer, but everything is optimized for
+your architecture and hardware, which translates into better
+performance and better power consumption!  You can also force apt-get
+to compile software.
+
+```shell
+sudo apt-get install libmesode
+sudo apt-get install libstrophe0 libstrophe-dev
+```
+
+If both those commands fail to locate packages to install, you'll need
+to build one yourself.  I went with `libmesode` as it's from the same
+author as `profanity`.
+
+```shell
+cd $HOME/$MY_SRC_DIR
+git clone git@github.com:boothj5/libmesode
+cd libmesode
+./bootstrap.sh
+./configure
+make
+sudo make install
+```
+
+That should do it for `libmesode`.
+
+Now you need to update the shared library cache using `ldconfig`.
+Otherwise, you'll get runtime errors when you run `profanity` because
+it can't find `libmesode.so`
+
+```shell
+sudo ldconfig
+```
+
+OK, now you're ready to build `profanity`.
+
+```shell
+cd $HOME/$MY_SRC_DIR
+git clone git@github.com:boothj5/profanity
+cd profanity
+
+# since you cloned it, you also need to run the bootstrap script:
+./bootstrap.sh
+./configure
+
+# if you didnt get errors in the configure script, you're good to go
+make
+sudo make install
+```
+
+Great, now you should have profanity.  Additionally, you'll need to
+download GNU's `secret-tool` if you want to configure it to stor your
+credentials securely.  Refer to the
+[Profanity FAQ](http://www.profanity.im/faq.html#keychain) for more
+info on adding your XMPP service passwords to the `secret-tools`
+keychain and configuring `profanity` to reference them, securely.
+
+```shell
+sudo apt-get install libsecret-tools
+```
+
+K, now you're ready.  Run `profanity` and refer to the
+[docs](http://www.profanity.im/basic.html) for more info on
+[themes](http://www.profanity.im/themes.html),
+[config files](http://www.profanity.im/files.html), and
+[room configuration](http://www.profanity.im/roomconf.html).
+Configuration is stored in `$HOME/config/profanity/profrc`.
+
 #### Other applications
 
 **Hex Editor**: wxHexEditor.  Cross platform hex editor.
@@ -102,12 +198,6 @@ Just going with Gnome Do for now.
 ```
 # easy
 sudo apt-get install wxhexeditor
-```
-
-**IRC: weechat**.  I like my irc in a terminal, with miami vice 80s colors
-
-```
-sudo apt-get install weechat weechat-plugins # ..... JUST KIDDING
 ```
 
 It could be that simple, folks.  but its not.  not only does ubuntu offer an
@@ -267,44 +357,98 @@ echo 2 > /sys/module/hid_apple/parameters/fnmode
 
 #### Built-in Webcam
 
-These kinds of issues are frustrating.  There are at least two main vendor incentives to make it a little bit more difficult to try Linux and OS alternatives.  Both Microsoft and Apple are guilty of these.
+These kinds of issues are frustrating.  There are at least two main
+vendor incentives to make it a little bit more difficult to try Linux
+and OS alternatives.  Both Microsoft and Apple are guilty of these.
 
-1. First, by make it difficult to use all your hardware features on another platform, this makes it more difficult to leave that platform and have a great experience.  This is not the primary incentive though, but it does prevent some people from running more than a Linux live cd. 😫 And it does prevent users from leaving, there is a definite benefit to that.
+1. First, by make it difficult to use all your hardware features on
+   another platform, this makes it more difficult to leave that
+   platform and have a great experience.  This is not the primary
+   incentive though, but it does prevent some people from running more
+   than a Linux live cd. 😫 And it does prevent users from leaving,
+   there is a definite benefit to that.
 
-2. Secondly, and this is the primary incentive, supporting third party OS's is a lot of work.  This is an investment of time and may preclude a 'pure' design or featureset or implementation.  For example, if Apple produces a driver for a device, then making sure that driver is compatible with a third-party OS may mean the design they *want* doesn't really work.  But mostly, why should a first party hardware/software company need to invest time in to supporting third-party products.  And then supporting it implies they are willing to support it to a degree.  It's unnecessary time/effort, it detracts from flexibility in hardware/software design, it increases product development time.
+2. Secondly, and this is the primary incentive, supporting third party
+   OS's is a lot of work.  This is an investment of time and may
+   preclude a 'pure' design or featureset or implementation.  For
+   example, if Apple produces a driver for a device, then making sure
+   that driver is compatible with a third-party OS may mean the design
+   they *want* doesn't really work.  But mostly, why should a first
+   party hardware/software company need to invest time in to
+   supporting third-party products.  And then supporting it implies
+   they are willing to support it to a degree.  It's unnecessary
+   time/effort, it detracts from flexibility in hardware/software
+   design, it increases product development time.
 
-However, this is incredibly frustrating.  And not because I want to switch to Linux completely, but because I want to run Linux side-by-side and I don't want to be essentially penalized with dozens of hours of work when I do that.  Hardware support has always been an issue with Linux, but it's improved magnanimously.  But mainly, the problems I'm having require more time to correct due to lack of experience in Linux and in the specific hardware set I'm working with, which is MacbookPro 15" October 2013.  These problems are difficult to search for, especially for noobs, because there's so much content out there that is similiar.  I didn't instantly determine that i didn't have a iSight camera, for example.  That wasted a lot of time!
+However, this is incredibly frustrating.  And not because I want to
+switch to Linux completely, but because I want to run Linux
+side-by-side and I don't want to be essentially penalized with dozens
+of hours of work when I do that.  Hardware support has always been an
+issue with Linux, but it's improved magnanimously.  But mainly, the
+problems I'm having require more time to correct due to lack of
+experience in Linux and in the specific hardware set I'm working with,
+which is MacbookPro 15" October 2013.  These problems are difficult to
+search for, especially for noobs, because there's so much content out
+there that is similiar.  I didn't instantly determine that i didn't
+have a iSight camera, for example.  That wasted a lot of time!
 
-The webcam didn't work out of the box.  I tried messing around in OBS to find it, but
-the device wasn't being found.  `sudo apt-get install cheese` and `cheese` to 
-troubleshoot.
+The webcam didn't work out of the box.  I tried messing around in OBS
+to find it, but the device wasn't being found.  `sudo apt-get install
+cheese` and `cheese` to troubleshoot.
 
-Looked at a lot of information on the iSight camera.  It seems like i may need access to the HFS partition, which i didn't realize was even possible.  Actually it's stupid to think that an HFS+ partition from OSX would ever be inaccessible from Linux, but I was beyond certain that it was.  Dammit, i wish that when i did stupid shit like bitch about HFS+ access in Linux, there was someone right beside me who would be there to smack my ass before i wasted hours on a problem that was never a problem at all.
+Looked at a lot of information on the iSight camera.  It seems like i
+may need access to the HFS partition, which i didn't realize was even
+possible.  Actually it's stupid to think that an HFS+ partition from
+OSX would ever be inaccessible from Linux, but I was beyond certain
+that it was.  Dammit, i wish that when i did stupid shit like bitch
+about HFS+ access in Linux, there was someone right beside me who
+would be there to smack my ass before i wasted hours on a problem that
+was never a problem at all.
 
-oh, but it's soooo easy to get [iSight webcam access](https://help.ubuntu.com/community/MactelSupportTeam/AppleiSight).
+oh, but it's soooo easy to get
+[iSight webcam access](https://help.ubuntu.com/community/MactelSupportTeam/AppleiSight).
 if you can mount the HFS+ filesystem.  mine's encrypted.  this seems
 to be causing some problems.
 
 #### Built-in Webcam (Round 2)
 
-Apparently, I don't have an iSight webcam and I'm an idiot for thinking I do.  One one level this is a small hit to my ego (since even though this is not at all obvious in Linux or OSX) but also exciting bc maybe i can get my webcam working from linux.
+Apparently, I don't have an iSight webcam and I'm an idiot for
+thinking I do.  One one level this is a small hit to my ego (since
+even though this is not at all obvious in Linux or OSX) but also
+exciting bc maybe i can get my webcam working from linux.
 
-Someone has written some drivers for the `facetimehd` camera, which is manufactured by `Broadcom`, whose very name makes me tremble with anger.  This package is experimental, but also, the following quote gives me a glorious feeling of righteousness:
+Someone has written some drivers for the `facetimehd` camera, which is
+manufactured by `Broadcom`, whose very name makes me tremble with
+anger.  This package is experimental, but also, the following quote
+gives me a glorious feeling of righteousness:
 
-> You can contribute and test this module without touching your Mac's Hard Disk.  
+> You can contribute and test this module without touching your Mac's Hard Disk.
 
-Praise be to the gods of open source, indeed.  First off, when following the [Getting Started(https://github.com/patjak/bcwc_pcie/wiki/Get-Started).  Apparently, a mistake, but I'm going to describe this in the order in which i proceeded.  So here's what i did.  
+Praise be to the gods of open source, indeed.  First off, when following the [Getting Started](https://github.com/patjak/bcwc_pcie/wiki/Get-Started). Apparently, a mistake, but I'm going to describe this in the order in which i proceeded.  So here's what i did, following the [Installation](https://github.com/patjak/bcwc_pcie/wiki/Get-Started#installation) section.
 
 ```shell
+
 # get dependencies
 sudo apt-get install linux-headers-3.19.0-32-generic git kmod checkinstall
 
 # clone bcwc_pcie
 cd ~/$YOUR_SRC_FOLDER
 git clone git@github.com:patjak/bcwc_pcie
+cd bcwc_pcie
 
+# build
+make
+
+# and install
+sudo checkinstall
+
+# (but i realized later, that i need to configure it for my hardware)
+# that is, i skipped the "firmware extraction" step
 
 ```
+
+However, it still wasnt working.  For Gnome users, you have the `cheese` GUI tool for using your webcam.  If it's not available `sudo apt-get install cheese`. 
+
 
 
 I needed to refer to the TLDP page on [webcams](http://www.tldp.org/HOWTO/Webcam-HOWTO/hardware.html), which contained some very handy info on troubleshooting general linux device issues.  I've used `lsmod`, `modprobe`, etc before, but this is a great resource in learning the ins and outs of dealing with linux device issues.

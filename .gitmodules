@@ -70,3 +70,9 @@
 [submodule "tmux-plugin-manager"]
 	path = tmux-plugin-manager
 	url = git@github.com:tmux-plugins/tpm
+[submodule "powerlevel9k"]
+	path = powerlevel9k
+	url = git@github.com:bhilburn/powerlevel9k
+[submodule "emacs.d"]
+	path = emacs.d
+	url = git@github.com:purcell/emacs.d

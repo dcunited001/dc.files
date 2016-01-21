@@ -1,4 +1,7 @@
-## rEFInd Security
+## Bootloader and rEFInd Security
+
+Note: this is now a blog post, available on
+[te.xel.io](http://te.xel.io/posts/2016-01-21-bootloader-and-refind-security.html).
 
 To properly implement rEFInd, this means YOU NEED TO KNOW WHAT
 YOU'RE DOING, especially if your security requires a more than usual
@@ -22,7 +25,9 @@ password.
 
 For many, using a password manager sounds overly complicated,
 especially one that's not sync'd to the cloud.  However, I can assure
-you, it's actually way simpler. Just trust me.
+you, it's actually way simpler. Just trust me. Everyone needs a
+variable degree of privacy, but it's important to know what
+protections your process actually gives you.
 
 > Don't let someone own all your bases at once.
 
@@ -39,8 +44,6 @@ passwords for work or whatever, don't store them all in one place.
 Don't store these password files on your computer and definitely not
 in the cloud.  Instead, store the most crucial ones on a
 LUKS-encrypted USB drive.  Or use a YubiKey, properly configured.
-
-
 
 ### (1) Signing your EFI bootloader!
 

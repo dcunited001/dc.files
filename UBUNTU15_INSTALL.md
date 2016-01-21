@@ -230,7 +230,13 @@ sudo sh cuda_7.5.18_linux.run
 
 ### rEFInd config
 
-after nvidia and other updates, init ram disk needs to be updated. 
+after nvidia and other updates, init ram disk needs to be updated.  you'll need to do this whenever you upgrade the kernel and sometimes when you add new devices.
+
+So if you're using refind, this means you'll need to update the vmlinuz and init ram disk images on your EFI partition.  Since it's small, you'll need to delete the old ones.  If you're EFI is signed (and it should be) or if your drives are encrypted (and they should be) this process will be a bit more involved...
+
+I wish I knew of an automated way to do this.  I'm sure there is one, but since your rEFInd config is personally configured, it's hard for an OS on your system to update it arbitrarily.  See notes about rEFInd security.  It is incredibly important because if not properly configured, you get locked out, or you provide an adversary with physical access and limited time (< 15 mins) with super-root access.
+
+properly restricting access 
 
 ### ffmpeg
 

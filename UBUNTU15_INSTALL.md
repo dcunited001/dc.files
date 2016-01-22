@@ -1,6 +1,8 @@
 ## Ubuntu 15.10 Install
 
-I originally installed this one, then couldn't get the xkb keyboard configuration running.  it kept causing errors, but i think I had invalid XML, so I'm trying it again.
+I originally installed this one, then couldn't get the xkb keyboard
+configuration running.  it kept causing errors, but i think I had
+invalid XML, so I'm trying it again.
 
 ### initial software
 
@@ -21,19 +23,30 @@ git config --global user.email "dconner.pro@gmail.com"
 
 ### privacy
 
-Hit `Super` and type `privacy` and hit `Enter`.  Navigate to the `Files & Applications` tab.  Turn it off.  If you're a programmer, you don't need that.  Uncheck all the boxes.  Click 'Clear Usage Data'.
+Hit `Super` and type `privacy` and hit `Enter`.  Navigate to the
+`Files & Applications` tab.  Turn it off.  If you're a programmer, you
+don't need that.  Uncheck all the boxes.  Click 'Clear Usage Data'.
 
-Use Find+Grep: `grind() { find . -type f -exec grep --color -nH -e $1 {} +` 
+Use Find+Grep:
+`grind() { find . -type f -exec grep --color -nH -e $1 {} +`
 
-> One reason I love emacs: it uses mostly GNU tools and is magnificent 
-> in exposing it's interface to you to show you the options available 
-> and how it does things. Learn how to use apropos to discover it's functionality.
+> One reason I love emacs: it uses mostly GNU tools and is magnificent
+> in exposing it's interface to you to show you the options available
+> and how it does things. Learn how to use apropos to discover it's
+> functionality.
 
-Next: Click the `Search` tab and tell it to exclude online results.  Also, you may want to exclude error reports.
+Next: Click the `Search` tab and tell it to exclude online results.
+Also, you may want to exclude error reports.
 
-Now, install `Unity Tweal Tool` with `sudo apt-get install unity-tweak-tool`.  Open it.
+Now, install `Unity Tweal Tool` with `sudo apt-get install
+unity-tweak-tool`.  Open it.
 
-There are some duplicate configurations here, but also more options.  To me, it's a bit irritating that the default Unity interface is so simplified, but I guess I understand why.  However, for me personally, I like all my configuration for an OS/App `in one place` and `searchable`.  IntelliJ and Android are two excellent examples of configuration UI's that are robust and easily discoverable. 
+There are some duplicate configurations here, but also more options.
+To me, it's a bit irritating that the default Unity interface is so
+simplified, but I guess I understand why.  However, for me personally,
+I like all my configuration for an OS/App `in one place` and
+`searchable`.  IntelliJ and Android are two excellent examples of
+configuration UI's that are robust and easily discoverable.
 
 
 ### loxodo password safe
@@ -43,17 +56,19 @@ It is a small tragedy, but there are no pwsafe managers for linux that:
 #### (1) I trust.  A password manager written in high-level language such as TCL really needs some thought.
 #### (2) Build easily without sketchy dependencies
 
-loxodo is a small command-line and GUI capable system for opening password files.  
+loxodo is a small command-line and GUI capable system for opening
+password files.
 
-```shell
-# i've got this one memorized
-sudo apt-get install git@github.com:sommer/loxodo ~/src/loxodo
-cd ~/src/loxodo
-```
+```shell # i've got this one memorized sudo apt-get install
+git@github.com:sommer/loxodo ~/src/loxodo cd ~/src/loxodo ```
 
-now put your password file where you want it and keep it on USB. also, you can keep loxodo on USB and load it as needed. luks that ish.
+now put your password file where you want it and keep it on USB. also,
+you can keep loxodo on USB and load it as needed. luks that ish.
 
-`./loxodo.py -i [psafe3file]` to run in interactive mode.  this can also be run in GUI mode, which I feel is less trustworthy.  close the app when you're not using it.  you can set a shortcut to open it, but be careful.
+`./loxodo.py -i [psafe3file]` to run in interactive mode.  this can
+also be run in GUI mode, which I feel is less trustworthy.  close the
+app when you're not using it.  you can set a shortcut to open it, but
+be careful.
 
 ### dotfiles
 
@@ -66,7 +81,11 @@ git submodule init
 git submodule update # and if you're not me, my repos from bitbucket will fail to d/l
 ``` 
 
-run init scripts with `./init/ubu.sh` and follow instructions. this isn't is a complete config, but it's close enough.  some of the stuff is outdated.  i don't completely configure vim any more.  the emacs init scripts are also outdated.  i mostly just use it to set up links for zsh.
+run init scripts with `./init/ubu.sh` and follow instructions. this
+isn't is a complete config, but it's close enough.  some of the stuff
+is outdated.  i don't completely configure vim any more.  the emacs
+init scripts are also outdated.  i mostly just use it to set up links
+for zsh.
 
 ```shell
 ./init/ubu.sh
@@ -80,7 +99,10 @@ link emacs.  i now use `purcell/emacs.d`
 
 ### fonts
 
-i like having symbola fonts and setting all fonts to deja vu w/ powerline.  these powerline patched fonts can be found in my dotfiles.  copying these fonts to `~/.fonts` should make them available to the system.
+i like having symbola fonts and setting all fonts to deja vu w/
+powerline.  these powerline patched fonts can be found in my dotfiles.
+copying these fonts to `~/.fonts` should make them available to the
+system.
 
 ```shell
 cd ~/.files/
@@ -88,7 +110,8 @@ mkdir ~/.fonts
 cp -R ~/.files/powerline-fonts/**/*.ttf ~/.fonts
 ```
 
-now, just hit the super key, type fonts and hit enter.  that should open the Font Viewer.  verify that everything is there.
+now, just hit the super key, type fonts and hit enter.  that should
+open the Font Viewer.  verify that everything is there.
 
 ### terminator profiles
 
@@ -102,7 +125,8 @@ TODO:
 
 ### xkb
 
-yeh, turns out the problem was the format of xml (forgot to put configItem tag inside variant tag)
+yeh, turns out the problem was the format of xml (forgot to put
+configItem tag inside variant tag)
 
 - moved io to `/usr/share/X11/xkb/symbols`
 - configured evdev.xml in `/usr/share/X11/xkb/rules/evdev.xml`

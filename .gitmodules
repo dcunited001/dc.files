@@ -10,9 +10,6 @@
 [submodule "iterm"]
 	path = iterm
 	url = git@github.com:dcunited001/dc.files.iterm
-[submodule "subl"]
-	path = subl
-	url = git@github.com:dcunited001/dc.files.subl
 [submodule "kbd"]
 	path = kbd
 	url = git@github.com:dcunited001/dc.files.kbd
@@ -40,15 +37,9 @@
 [submodule "osx"]
 	path = osx
 	url = git@github.com:dcunited001/dc.files.osx
-[submodule "prelude"]
-	path = prelude
-	url = git@github.com:bbatsov/prelude
 [submodule "emacs"]
 	path = emacs
 	url = git@github.com:dcunited001/dc.files.emacs
-[submodule "rb"]
-	path = rb
-	url = git@github.com:dcunited001/dc.files.rb
 [submodule "irc"]
 	path = irc
 	url = git@github.com:dcunited001/dc.files.irc
@@ -61,9 +52,6 @@
 [submodule "powerline-fonts"]
 	path = powerline-fonts
 	url = git@github.com:Lokaltog/powerline-fonts
-[submodule "powerline"]
-	path = powerline
-	url = git@github.com:dcunited001/dc.files.powerline
 [submodule "iTerm2-Color-Schemes"]
 	path = iTerm2-Color-Schemes
 	url = https://github.com/mbadolato/iTerm2-Color-Schemes

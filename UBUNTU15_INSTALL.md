@@ -70,6 +70,8 @@ also be run in GUI mode, which I feel is less trustworthy.  close the
 app when you're not using it.  you can set a shortcut to open it, but
 be careful.
 
+TODO: setup loxodo with GTK for GUI (requires pip & pygtk?)
+
 ### dotfiles
 
 clone dotfiles
@@ -79,7 +81,7 @@ git clone git@github.com:dcunited001/dc.files ~/.files
 cd ~/.files
 git submodule init
 git submodule update # and if you're not me, my repos from bitbucket will fail to d/l
-``` 
+```
 
 run init scripts with `./init/ubu.sh` and follow instructions. this
 isn't is a complete config, but it's close enough.  some of the stuff
@@ -311,7 +313,9 @@ sudo apt-get install kernel-headers-`uname -r`
 sudo sh cuda_7.5.18_linux.run
 ```
 
-### rEFInd config
+So this installed the nvidia drivers and CUDA software
+
+### rEFInd Config
 
 after nvidia and other updates, init ram disk needs to be updated.
 you'll need to do this whenever you upgrade the kernel and sometimes
@@ -334,15 +338,105 @@ For more info on properly restricting access to rEFInd, see my
 [blog post](http://te.xel.io/posts/2016-01-21-bootloader-and-refind-security.html)
 for a high level overview.
 
+### monitoring tools
+
+installed perf to see why kworkers were being spawned which consumed 100% of one core, constantly.
+
+install perf dependencies:
+
+```shell
+sudo apt-get install linux-tools-common linux-tools-`uname -r` linux-cloud-tools-`uname -r`
+```
+
+run perf to monitor for 10s
+
+```shell
+sudo perf record -g -a sleep 10
+```
+
+view perf report
+
+```shell
+sudo perf report
+sudo perf report --sort comm # for higher level view
+```
+
+still wasn't able to deduce what was causing this wierd CPU behavior though
+
 ### ffmpeg
+
+refer to [FFMPEG docs](https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu)
+
+required packages:
+
+```shell
+sudo apt-get update
+sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev libfreetype6-dev \
+  libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev \
+  libxcb-xfixes0-dev pkg-config texinfo zlib1g-dev
+```
+
+optional packages:
+
+```shell
+sudo apt-get install yasm libx264-dev
+```
+
 
 
 ### obs
 
+refer to [OBS docs](https://github.com/jp9000/obs-studio/wiki/Install-Instructions)
 
+clone repo and checkout the latest release
+
+```shell
+git clone --recursive git@github.com:jp9000/obs-studio ~/src/obs-studio
+cd ~/src/obs-studio
+git checkout -b 0.12.4 # or latest release
+```
+
+build deps:
+
+```shell
+sudo apt-get install build-essential pkg-config cmake git checkinstall
+```
+
+required packages:
+
+```shell
+sudo apt-get install libx11-dev libgl1-mesa-dev libpulse-dev libxcomposite-dev \
+        libxinerama-dev libv4l-dev libudev-dev libfreetype6-dev \
+        libfontconfig-dev qtbase5-dev libqt5x11extras5-dev libx264-dev \
+        libxcb-xinerama0-dev libxcb-shm0-dev libjack-jackd2-dev libcurl4-openssl-dev
+```
+
+build/install ffmpeg
+
+```shell
+
+```
 
 ### python
 
-TODO: make sure i get python right
+So after i configured python in Linux Mint, somehow I ended up needing
+to sudo for every friggin `pip` command...  So i really gotta get this
+right.  Having that issue is really irritating to deal with after the
+fact.
+
+As of now, I have `ls -l $(which python)` pointing to `/usr/bin/python
+-> python2.7` and `ls -l $(which python3)` pointing to
+`/usr/bin/python3 -> python3.4`, with neither `pip` or `pip3`.  So,
+clean install of both `python2` and `python3`.
+
+TODO: pip without sudo
+
+TODO: virtualenv?
+
+### ruby
+
+TODO: chruby
+
+TODO: ruby-install
 
 

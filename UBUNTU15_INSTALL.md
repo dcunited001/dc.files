@@ -513,21 +513,21 @@ build libx264-dev.
 ```shell
 git clone https://git.videolan.org/git/x264.git ~/src/x264
 cd ~/src/x264
-./configure
+./configure --enable-shared --enable-pic
 # make fprofiled?
 make
-make install
+sudo make install
 ```
 
 probably don't need h265
 
 libfdk-aac.  want this.
 
-```shel
+```shell
 git clone git@github.com:mstorjo/fdk-aac ~/src/fdk-aac
 cd ~/src/fdk-aac
 ./autogen.sh
-./configure --disable-shared # may want to locally install
+./configure --with-pic --disable-shared # may want to locally install
 make
 sudo make install
 make distclean
@@ -542,7 +542,7 @@ git clone git@github.com:webmproject/libvpx ~/src/libvpx
 cd ~/src/libvpx
 mkdir build
 cd build
-../configure --disable-examples --disable-unit-tests
+../configure --enable-pic --disable-examples --disable-unit-tests
 make
 sudo make install
 make clean
@@ -554,6 +554,7 @@ ffmpeg
 git clone git@github.com:FFmpeg/FFmpeg ~/src/ffmpeg
 cd ~/src/ffmpeg
 ./configure --pkg-config-flags="--static" \
+  --cc="gcc -m64 -fPIC" \
   --enable-gpl \
   --enable-libass \
   --enable-libfdk-aac \
@@ -566,10 +567,16 @@ cd ~/src/ffmpeg
   --enable-libx264 \
   --enable-nonfree
 make
-sudo make install
+#sudo make install
+sudo checkinstall --pkgname=FFmpeg --fstrans=no --backup=no \
+  --pkgversion="$(date +%Y%m%d)-git" --deldoc=yes
 make distclean
 hash -r
 ```
+
+ran into problems building obs with this ffmpeg build, where make was
+complaining about "-fPIC" flags.  i needed to add --enable-pic or --with-pic
+to each built dependency.  or --enable-shared.
 
 
 ### obs
@@ -598,6 +605,17 @@ sudo apt-get install libx11-dev libgl1-mesa-dev libpulse-dev libxcomposite-dev \
         libxinerama-dev libv4l-dev libudev-dev libfreetype6-dev \
         libfontconfig-dev qtbase5-dev libqt5x11extras5-dev \
         libxcb-xinerama0-dev libxcb-shm0-dev libjack-jackd2-dev libcurl4-openssl-dev
+```
+
+build
+
+```shell
+cmake -DUNIX_STRUCTURE=1 \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_C_FLAGS="-fPIC" \
+  -DCMAKE_CXX_FLAGS="-fPIC" \
+  ..
+
 ```
 
 

@@ -412,7 +412,69 @@ in order, the third of which contains the kernel config diffs. so I
 can easily match the configuration used by ubuntu developers in
 their build of the kernel and make minor modifications if i'd like.
 
+so, start by cloning the repo
 
+```shell
+cd ~/src/mainline
+git clone https://git.launchpad.net/~ubuntu-kernel-test/ubuntu/+source/linux/+git/mainline-crack linux-4.4
+
+# wait for it ... wait for it ... lulz
+```
+
+while you're waiting (repo > 1GB), download the build deps:
+
+```shell
+sudo apt-get install libncurses5-dev gcc make git exuberant-ctags bc libssl-dev
+sudo apt-get install fakeroot kernel-wedge
+```
+
+also, download the patchfiles from the ubuntu mainline
+
+```shell
+wget http://kernel.ubuntu.com/.../*.patch
+```
+
+now checkout v4.4
+
+```shell
+cd linux-4.4
+git tags --list | grep 4.4
+git checkout v4.4
+```
+
+apply patches
+
+```shell
+patch -p1 < 0001*.patch
+patch -p1 < 0002*.patch
+patch -p1 < 0003*.patch
+```
+
+update permissions
+
+```shell
+# fakeroot was failing until i updated these
+chmod a+x debian/rules
+chmod a+x debian/scripts/*
+chmod a+x debian/scripts/misc/*
+```
+
+build
+
+```shell
+make clean
+make mrproper
+make oldconfig
+make -j8 deb-pkg
+```
+
+install
+
+```shell
+sudo dpkg -i ~/src/mainline/linux-*-4.4.0*.deb
+```
+
+update EFI
 
 ### ffmpeg
 

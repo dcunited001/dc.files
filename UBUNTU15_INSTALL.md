@@ -492,9 +492,84 @@ sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev
 optional packages:
 
 ```shell
-sudo apt-get install yasm libx264-dev
+sudo apt-get install yasm libx264-dev libfdk-aac # build these
+sudo apt-get install libmp3lame-dev libopus-dev # bin these
 ```
 
+build yasm. yasm is for optimization.
+
+```shell
+git clone git@github.com:yasm/yasm ~/src/yasm
+cd ~/src/yasm
+./autogen.sh
+./configure
+make
+make install
+make distclean
+```
+
+build libx264-dev.
+
+```shell
+git clone https://git.videolan.org/git/x264.git ~/src/x264
+cd ~/src/x264
+./configure
+# make fprofiled?
+make
+make install
+```
+
+probably don't need h265
+
+libfdk-aac.  want this.
+
+```shel
+git clone git@github.com:mstorjo/fdk-aac ~/src/fdk-aac
+cd ~/src/fdk-aac
+./autogen.sh
+./configure --disable-shared # may want to locally install
+make
+sudo make install
+make distclean
+```
+
+libvpx.  sounds cool.  free.
+
+```shell
+# i also needed to remove libvpx2 ... i think?
+
+git clone git@github.com:webmproject/libvpx ~/src/libvpx
+cd ~/src/libvpx
+mkdir build
+cd build
+../configure --disable-examples --disable-unit-tests
+make
+sudo make install
+make clean
+```
+
+ffmpeg
+
+```shell
+git clone git@github.com:FFmpeg/FFmpeg ~/src/ffmpeg
+cd ~/src/ffmpeg
+./configure --pkg-config-flags="--static" \
+  --enable-gpl \
+  --enable-libass \
+  --enable-libfdk-aac \
+  --enable-libfreetype \
+  --enable-libmp3lame \
+  --enable-libopus \
+  --enable-libtheora \
+  --enable-libvorbis \
+  --enable-libvpx \
+  --enable-libx264 \
+  --enable-nonfree
+make
+sudo make install
+make distclean
+hash -r
+```
 
 
 ### obs
@@ -518,17 +593,13 @@ sudo apt-get install build-essential pkg-config cmake git checkinstall
 required packages:
 
 ```shell
+# libx264-dev already built for ffmpeg
 sudo apt-get install libx11-dev libgl1-mesa-dev libpulse-dev libxcomposite-dev \
         libxinerama-dev libv4l-dev libudev-dev libfreetype6-dev \
-        libfontconfig-dev qtbase5-dev libqt5x11extras5-dev libx264-dev \
+        libfontconfig-dev qtbase5-dev libqt5x11extras5-dev \
         libxcb-xinerama0-dev libxcb-shm0-dev libjack-jackd2-dev libcurl4-openssl-dev
 ```
 
-build/install ffmpeg
-
-```shell
-
-```
 
 ### python
 
@@ -545,6 +616,10 @@ clean install of both `python2` and `python3`.
 TODO: pip without sudo
 
 TODO: virtualenv?
+
+### opencv
+
+
 
 ### ruby
 
@@ -572,3 +647,11 @@ ruby
 ruby-install --latest
 ruby-install ruby 2.3.0
 ```
+
+### docker
+
+
+
+### tensorflow
+
+

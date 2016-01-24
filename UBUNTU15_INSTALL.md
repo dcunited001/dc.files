@@ -363,6 +363,57 @@ sudo perf report --sort comm # for higher level view
 
 still wasn't able to deduce what was causing this wierd CPU behavior though
 
+### updating kernel from mainline
+
+i wanted to get the latest kernel version (at least 4.4) so I
+configured my system to install an upstream kernel from
+[mainline](https://wiki.ubuntu.com/Kernel/MainlineBuildsxs).
+
+so, i connected to the
+[mainline index](http://kernel.ubuntu.com/~kernel-ppa/mainline/) and
+found the
+[v4.4 listing](http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-wily/),
+then downloaded the proper deb's for my arch to `~/src/mainline/4.4`
+with `wget`
+
+```shell
+cd ~/src/mainline/4.4
+
+wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-wily/linux-headers-4.4.0-040400-generic_4.4.0-040400.201601101930_amd64.deb
+
+wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-wily/linux-image-4.4.0-040400-generic_4.4.0-040400.201601101930_amd64.deb
+
+wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-wily/linux-headers-4.4.0-040400_4.4.0-040400.201601101930_all.deb
+```
+
+and install them with `dpkg`
+
+```shell
+sudo dpkg -i linux-headers-4.4*.deb linux-image-4.4*.deb
+```
+
+After installation, I updated the vmlinuz and initrd images on my EFI
+partition, rebooted and everything seemed to work alright.  no need to
+update/reinstall nvidia drivers or wireless drivers, which i expected to.
+I may still need to reinstall CUDA though.
+
+if you need to remove these, simply `sudo apt-get remove` the
+corresponding packages
+
+### updating kernel with build
+
+this is a bit more advanced, but worth it, I think. the readme
+included in the folder for the mainline kernel deb's describes the
+build process.
+
+basically, the kernel source is downloaded via git and a tag is
+checked out.  for ubuntu, there are several patches which are applied
+in order, the third of which contains the kernel config diffs. so I
+can easily match the configuration used by ubuntu developers in
+their build of the kernel and make minor modifications if i'd like.
+
+
+
 ### ffmpeg
 
 refer to [FFMPEG docs](https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu)

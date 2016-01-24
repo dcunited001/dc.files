@@ -43,6 +43,8 @@ I can't use proprietary NVidia drivers with MIR, which means I can't use GPU ver
 
 This is really not a huge deal for most people, as you really don't need that functionality.  But for me, this is a deal-breaker for now.
 
+> nevermind.  apparently, ubuntu 16.04 doesn't include MIR
+
 
 
 

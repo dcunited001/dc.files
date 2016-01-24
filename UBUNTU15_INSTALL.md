@@ -548,8 +548,27 @@ TODO: virtualenv?
 
 ### ruby
 
-TODO: chruby
+ruby-install
 
-TODO: ruby-install
+```shell
+git clone git@github.com:postmodern/ruby-install ~/src/ruby-install
+cd ~/src/ruby-install
+sudo make install
+```
 
+chruby
 
+```shell
+git clone git@github.com:postmodern/chruby ~/src/chruby
+cd ~/src/chruby
+sudo make install
+echo "source /usr/local/share/chruby/chruby.sh" >> ~/.zshrc
+source ~/.zshrc
+```
+
+ruby
+
+```shell
+ruby-install --latest
+ruby-install ruby 2.3.0
+```

@@ -418,6 +418,8 @@ so, start by cloning the repo
 
 ```shell
 cd ~/src/mainline
+
+# DOWNLOAD THE OFFICIAL TORVALDS TREE (instead of the below tree, the bandwidth is terrible)
 git clone https://git.launchpad.net/~ubuntu-kernel-test/ubuntu/+source/linux/+git/mainline-crack linux-4.4
 
 # wait for it ... wait for it ... lulz
@@ -444,13 +446,26 @@ git tags --list | grep 4.4
 git checkout v4.4
 ```
 
-apply patches
+apply Ubuntu patches
 
 ```shell
 patch -p1 < 0001*.patch
 patch -p1 < 0002*.patch
 patch -p1 < 0003*.patch
 ```
+
+AUFS
+
+download `aufs4-standalone` and `aufs-util`
+
+```shell
+git clone git@github.com:sfjro/aufs4-standalone.git ~/src/aufs4-standalone
+git clone git@git.code.sf.net/p/aufs/aufs-util ~/src/aufs-util
+```
+
+TODO: finish documenting AUFS process for Docker
+
+docs to [patch AUFS into kernel v3.19ish](http://zackreed.me/articles/89-compile-aufs-with-3-18-6-kernel-hnotify-and-nfs-exportability)
 
 update permissions
 
@@ -690,7 +705,20 @@ ruby-install ruby 2.3.0
 
 ### docker
 
+docker's own documentation is sufficient.  mostly documenting this because, when using a custom kernel in Ubuntu, you can't `apt-get` a package for `linux-image-extra`, so ... no AUFS.  also, i want all of my set up documentation to be centralized.
 
+setup the docker ppa
+
+```shell
+echo "deb https://apt.dockerproject.org/repo ubuntu-wily main" > sudo tee -a /etc/apt/sources.list.d/docker.list
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+sudo apt-get update
+sudo apt-get purge lxc-docker
+sudo apt-cache policy docker-engine # package docker-engine doesn't exist...
+```
+
+
+.... welllll looks like i have to patch the kernel and rebuild. fuck that right now.
 
 ### tensorflow
 

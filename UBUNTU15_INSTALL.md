@@ -496,6 +496,13 @@ sudo apt-get install yasm libx264-dev libfdk-aac # build these
 sudo apt-get install libmp3lame-dev libopus-dev # bin these
 ```
 
+set `$INSTALLHOME`
+
+```shell
+export INSTALLHOME=/usr
+export BINHOME=/bin
+```
+
 build yasm. yasm is for optimization.
 
 ```shell
@@ -503,8 +510,8 @@ git clone git@github.com:yasm/yasm ~/src/yasm
 cd ~/src/yasm
 ./autogen.sh
 ./configure
-make
-make install
+make --prefix=$INSTALLHOME --bindir=$BINHOME
+sudo make install
 make distclean
 ```
 
@@ -513,7 +520,8 @@ build libx264-dev.
 ```shell
 git clone https://git.videolan.org/git/x264.git ~/src/x264
 cd ~/src/x264
-./configure --enable-shared --enable-pic
+./configure --enable-shared --enable-pic --enable-static --enable-swscale \
+  --prefix=$INSTALLHOME --bindir=$BINHOME
 # TODO: try --enable-static
 # make fprofiled?
 make
@@ -528,9 +536,9 @@ libfdk-aac.  want this.
 ```shell
 git clone git@github.com:mstorjo/fdk-aac ~/src/fdk-aac
 cd ~/src/fdk-aac
-./autogen.sh
+autoreconf -fiv
 # tried changing to --enable-shared
-./configure --with-pic --enable-shared # may want to locally install
+./configure --with-pic --disable-shared --prefix=$INSTALLHOME
 make
 sudo make install
 make distclean
@@ -545,10 +553,12 @@ git clone git@github.com:webmproject/libvpx ~/src/libvpx
 cd ~/src/libvpx
 mkdir build
 cd build
-../configure --enable-pic --disable-examples --disable-unit-tests
+./configure --enable-pic --prefix=$INSTALLPATH --disable-examples --disable-unit-tests
 make
 sudo make install
-make clean
+make distclean
+
+# note: this lib ignored --prefix and installed in /usr/local/lib
 ```
 
 ffmpeg
@@ -556,10 +566,10 @@ ffmpeg
 ```shell
 git clone git@github.com:FFmpeg/FFmpeg ~/src/ffmpeg
 cd ~/src/ffmpeg
-./configure \
-  --prefix=/usr \
-  --extra-cflags="-I/usr/include" \
-  --extra-ldflags="-L/usr/lib" \
+PKG_CONFIG_PATH="$INSTALLHOME/lib/pkgconfig" ./configure \
+  --prefix=$INSTALLHOME \
+  --extra-cflags="-I$INSTALLHOME/include" \
+  --extra-ldflags="-L$INSTALLHOME/lib" \
   --pkg-config-flags="--static" \
   --enable-gpl \
   --enable-pic \
@@ -567,38 +577,25 @@ cd ~/src/ffmpeg
   --enable-nonfree \
   --enable-libx264 \
   --enable-libfdk-aac \
-
-
-
-#--enable-pic \
-  #--cc="gcc -m64 -fPIC" \
-  #--enable-libass \
-  #--enable-libfdk-aac \
-  #--enable-libfreetype \
-  #--enable-libmp3lame \
-  #--enable-libopus \
-  #--enable-libtheora \
-  #--enable-libvorbis \
-  #--enable-libvpx \
-  #--enable-libx264 \
-  #--enable-nonfree
+  --enable-libass \
+  --enable-libfreetype \
+  --enable-libmp3lame \
+  --enable-libopus \
+  --enable-libtheora \
+  --enable-libvorbis \
+  --enable-libvpx \
 
 make -j8
-#sudo make install
+#sudo make install #use checkinstall on debian
 sudo checkinstall --pkgname=FFmpeg --fstrans=no --backup=no \
   --pkgversion="$(date +%Y%m%d)-git" --deldoc=yes
 make distclean
 hash -r
 ```
 
-ran into problems building obs with this ffmpeg build, where make was
-complaining about "-fPIC" flags.  i needed to add --enable-pic or --with-pic
-to each built dependency.  or --enable-shared.
-
-- libavutil-ffmpeg54
-- libpostproc-ffmpeg53
-- libswresample-ffmpeg1
-- libswscale-ffmpeg3
+Ran into problems building obs with this ffmpeg build, where make was
+complaining about "-fPIC" flags.  I needed to add --enable-pic or --with-pic
+to each built dependency.  or --enable-shared. 
 
 ### obs
 
@@ -633,13 +630,14 @@ build
 ```shell
 cmake -DUNIX_STRUCTURE=1 \
   -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_C_FLAGS="-fPIC" \
-  -DCMAKE_CXX_FLAGS="-fPIC" \
   ..
 make -j8
-
+sudo checkinstall --pkgname=obs-studio --fstrans=no --backup=no \
+       --pkgversion="$(date +%Y%m%d)-git" --deldoc=yes
 ```
 
+Note: it helped to open a new terminal... I guess something didn't get set right with the ffmpeg install.  `cmake` couldn't detect the ffmpeg version number until I opened a new terminal. I don't think setting `--prefix` on each of the dep installs really helped.  instead,
+i think it was the fact that i had skipped `pkg-config` with `ffmpeg`
 
 ### python
 

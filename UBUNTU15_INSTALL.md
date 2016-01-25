@@ -448,6 +448,7 @@ git checkout v4.4
 
 apply Ubuntu patches
 
+
 ```shell
 patch -p1 < 0001*.patch
 patch -p1 < 0002*.patch
@@ -464,6 +465,10 @@ git clone git@git.code.sf.net/p/aufs/aufs-util ~/src/aufs-util
 ```
 
 TODO: finish documenting AUFS process for Docker
+
+- apply AUFS patches
+- build aufs-util
+- install aufs-tools
 
 docs to [patch AUFS into kernel v3.19ish](http://zackreed.me/articles/89-compile-aufs-with-3-18-6-kernel-hnotify-and-nfs-exportability)
 
@@ -491,7 +496,14 @@ install
 sudo dpkg -i ~/src/mainline/linux-*-4.4.0*.deb
 ```
 
-update EFI
+upkeep: update initramfs whenever `apt-get` makes `DKMS` changes. my wifi seemed to lose it's wireless-n capability, so I needed to `sudo apt-get install bcmwl-kernel-source --reinstall`.  however, this didn't autogenerate an initramfs for my custom kernel, so i had to manually generate it with the following and then update my EFI.  (on the other hand, this might be speculation on my part)
+
+```shell
+sudo update-initramfs -u -k all
+```
+
+update EFI: copy /boot/* images and make conf changes
+
 
 ### ffmpeg
 

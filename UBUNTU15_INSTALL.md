@@ -397,7 +397,9 @@ partition, rebooted and everything seemed to work alright.  no need to
 update/reinstall nvidia drivers or wireless drivers, which i expected to.
 I may still need to reinstall CUDA though.
 
-if you need to remove these, simply `sudo apt-get remove` the
+however, i did need to rebuild `bcwc_pcie` and reinstall the `facetimehd` camera module
+
+if you need to remove these mainline kernels, simply `sudo apt-get remove` the
 corresponding packages
 
 ### updating kernel with build

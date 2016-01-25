@@ -514,9 +514,11 @@ build libx264-dev.
 git clone https://git.videolan.org/git/x264.git ~/src/x264
 cd ~/src/x264
 ./configure --enable-shared --enable-pic
+# TODO: try --enable-static
 # make fprofiled?
 make
 sudo make install
+make distclean
 ```
 
 probably don't need h265
@@ -527,7 +529,8 @@ libfdk-aac.  want this.
 git clone git@github.com:mstorjo/fdk-aac ~/src/fdk-aac
 cd ~/src/fdk-aac
 ./autogen.sh
-./configure --with-pic --disable-shared # may want to locally install
+# tried changing to --enable-shared
+./configure --with-pic --enable-shared # may want to locally install
 make
 sudo make install
 make distclean
@@ -553,20 +556,34 @@ ffmpeg
 ```shell
 git clone git@github.com:FFmpeg/FFmpeg ~/src/ffmpeg
 cd ~/src/ffmpeg
-./configure --pkg-config-flags="--static" \
-  --cc="gcc -m64 -fPIC" \
+./configure \
+  --prefix=/usr \
+  --extra-cflags="-I/usr/include" \
+  --extra-ldflags="-L/usr/lib" \
+  --pkg-config-flags="--static" \
   --enable-gpl \
-  --enable-libass \
-  --enable-libfdk-aac \
-  --enable-libfreetype \
-  --enable-libmp3lame \
-  --enable-libopus \
-  --enable-libtheora \
-  --enable-libvorbis \
-  --enable-libvpx \
+  --enable-pic \
+  --enable-shared \
+  --enable-nonfree \
   --enable-libx264 \
-  --enable-nonfree
-make
+  --enable-libfdk-aac \
+
+
+
+#--enable-pic \
+  #--cc="gcc -m64 -fPIC" \
+  #--enable-libass \
+  #--enable-libfdk-aac \
+  #--enable-libfreetype \
+  #--enable-libmp3lame \
+  #--enable-libopus \
+  #--enable-libtheora \
+  #--enable-libvorbis \
+  #--enable-libvpx \
+  #--enable-libx264 \
+  #--enable-nonfree
+
+make -j8
 #sudo make install
 sudo checkinstall --pkgname=FFmpeg --fstrans=no --backup=no \
   --pkgversion="$(date +%Y%m%d)-git" --deldoc=yes
@@ -578,6 +595,10 @@ ran into problems building obs with this ffmpeg build, where make was
 complaining about "-fPIC" flags.  i needed to add --enable-pic or --with-pic
 to each built dependency.  or --enable-shared.
 
+- libavutil-ffmpeg54
+- libpostproc-ffmpeg53
+- libswresample-ffmpeg1
+- libswscale-ffmpeg3
 
 ### obs
 
@@ -615,6 +636,7 @@ cmake -DUNIX_STRUCTURE=1 \
   -DCMAKE_C_FLAGS="-fPIC" \
   -DCMAKE_CXX_FLAGS="-fPIC" \
   ..
+make -j8
 
 ```
 

@@ -1,8 +1,11 @@
 ## Ubuntu 15.10 Install
 
-I originally installed this one, then couldn't get the xkb keyboard
-configuration running.  it kept causing errors, but i think I had
-invalid XML, so I'm trying it again.
+This is all installed on a 15" MacbookPro 2013.  That's the `11,3`,
+which was released in October 2013. this will be nearly the identical
+config for the `11,2` as well, although I think the `11,1` is missing
+an nvidia graphics card .. maybe?  i donno.  it will be mostly the
+same the `12,1` and `12,x` series. honestly .. i'm just bullshitting
+here and trying to cover my SEO bases lol.
 
 ### initial software
 
@@ -137,6 +140,20 @@ configItem tag inside variant tag)
 - `echo options hid_apple fnmode=2 | sudo tee -a /etc/modprobe.d/hid_apple.conf` to fix function keys for subsequent sessions
 - after updating `hid_apple.conf` need to copy this config to initramfs with `sudo update-initramfs -u -k all`
 - after reboot, everything seems to work
+
+### touchpad fixes
+
+when you use a macbookpro outside of OSX, you really begin to
+appreciate whatever magic apple works with those touchpad drivers,
+because this shit sucks out of the box.  it works pretty well in
+linux, i guess.  but you really need to get some custom drivers
+running in Ubuntu, bc that shit drives me crazy.  i'm always
+misclicking things and scrolling/highlighting and i enjoy the
+multitouch drivers occasionally.
+
+```shell
+# TODO: describe touchpad config
+```
 
 ### emacs
 
@@ -668,6 +685,14 @@ sudo checkinstall --pkgname=obs-studio --fstrans=no --backup=no \
 Note: it helped to open a new terminal... I guess something didn't get set right with the ffmpeg install.  `cmake` couldn't detect the ffmpeg version number until I opened a new terminal. I don't think setting `--prefix` on each of the dep installs really helped.  instead,
 i think it was the fact that i had skipped `pkg-config` with `ffmpeg`
 
+### configure OBS
+
+this always seems a bit harder on linux than osx. also, various streaming services likely have various requirements.  the livecoding.tv doc is pretty good
+
+### configure RTMP multiplexer with live video effects
+
+haha j/k j/k.  one day.
+
 ### python
 
 So after i configured python in Linux Mint, somehow I ended up needing
@@ -680,11 +705,60 @@ As of now, I have `ls -l $(which python)` pointing to `/usr/bin/python
 `/usr/bin/python3 -> python3.4`, with neither `pip` or `pip3`.  So,
 clean install of both `python2` and `python3`.
 
-TODO: pip without sudo
+going to install `virtualenv` from source, without `pip`, then install pips within virtualenv
 
-TODO: virtualenv?
+```shell
+git clone git@github.com:pypa/virtualenv ~/src/python/virtualenv
+cd ~/src/python/virtualenv
+git checkout 14.0.1 # checkout most recent tag
+sudo python setup.py install
+
+#hmmm .. i wonder if the sudo here is going to fuck me up
+```
+
+i specifically remember picking `virtualenv` & `virtualenvwrapper`
+over `pyenv`, but i can't remember why.  it was fairly important
+though.  `virtualenv` is the correct answer, but i can't remember
+exactly why. womp womp. also, `anaconda` looks like a good way to go.
+
+setting up virtualenvwrapper requires `setuptools`:
+
+```shell
+git clone git@github.com:jaraco/setuptools ~/src/python/setuptools
+cd ~/src/python/setuptools
+
+```
+
+set up `virtualenvwrapper`:
+
+```shell
+# virtualenvwrapper is hosted on bitbucket
+git clone git@github.com:dhellmann/virtualenvwrapper ~/src/python/virtualenvwrapper
+cd ~/src/python/virtualenvwrapper
+sudo python setup.py install
+```
+
+configure `virtualenvwrapper`:
+
+
+
+install pythons and pips:
+
+
+
+test pip without sudo:
+
+### tensorflow
+
+a better test would be to built/install tensorflow, since I'm going to be doing that anyways.
+
+
+
+
 
 ### opencv
+
+
 
 
 
@@ -729,9 +803,7 @@ sudo apt-get purge lxc-docker
 sudo apt-cache policy docker-engine # package docker-engine doesn't exist...
 ```
 
-
 .... welllll looks like i have to patch the kernel and rebuild. fuck that right now.
 
-### tensorflow
 
 

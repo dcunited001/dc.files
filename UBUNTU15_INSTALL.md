@@ -711,54 +711,10 @@ As of now, I have `ls -l $(which python)` pointing to `/usr/bin/python
 `/usr/bin/python3 -> python3.4`, with neither `pip` or `pip3`.  So,
 clean install of both `python2` and `python3`.
 
-
-.... on second thought, i'm going to try to just install with pip.
-this is significantly more simple.  i think my problem was not
-activating my virtualenv.
-
 ```shell
 sudo apt-get install python-pip
 sudo pip install virtualenv virtualenvwrapper
 ```
-
-#### installing without pip
-
-going to install `virtualenv` from source, without `pip`, then install pips within virtualenv
-
-
-```shell
-git clone git@github.com:pypa/virtualenv ~/src/python/virtualenv
-cd ~/src/python/virtualenv
-git checkout 14.0.1 # checkout most recent tag
-sudo python setup.py install
-
-#hmmm .. i wonder if the sudo here is going to fuck me up
-```
-
-i specifically remember picking `virtualenv` & `virtualenvwrapper`
-over `pyenv`, but i can't remember why.  it was fairly important
-though.  `virtualenv` is the correct answer, but i can't remember
-exactly why. womp womp. also, `anaconda` looks like a good way to go.
-
-setting up virtualenvwrapper requires `setuptools`:
-
-```shell
-git clone git@github.com:jaraco/setuptools ~/src/python/setuptools
-cd ~/src/python/setuptools
-sudo python ez_setup.py
-```
-
-set up `virtualenvwrapper`:
-
-```shell
-# virtualenvwrapper is hosted on bitbucket
-git clone git@github.com:dhellmann/virtualenvwrapper ~/src/python/virtualenvwrapper
-cd ~/src/python/virtualenvwrapper
-sudo python setup.py install
-```
-
-... this did not work: no module named stevedore/pbr? need to install more deps.
-i reinstalled virtualenv/virtualenvwrapper with pip
 
 #### configuring virtualenvwrapper
 
@@ -801,6 +757,18 @@ virtualenvwrapper.user_scripts could not run "/home/dc/.virtualenvs/fooenv/bin/p
 deactivate:unset:1: no such hash table element: pydoc
 ```
 
+### jupyter
+
+
+
+### EIN (emacs-ipython-notebook)
+
+
+
+### scipy/numpy
+
+
+
 ### cuda
 
 TODO: before tensorflow, i need to ensure CUDA is installed properly.
@@ -811,20 +779,43 @@ script.
 
 going to build/install tensorflow GPU version:
 
-install bazel & deps:
+#### install bazel
+
+for Ubuntu 15.10, install open jdk 8 and ensure other deps are installed
 
 ```shell
+sudo apt-get install openjdk-8-jdk pkg-config zip g++ zlib1g-dev unzip
+```
 
+clone bazel:
+
+```shell
+git clone git@github.com:bazelbuild/bazel ~/src/bazel
+~/src/bazel
+git tags --list # find most recent tag
+git checkout 0.1.4
+
+# ... nevermind, just download the bin, don't feel like figuring it out
+
+BAZEL_VERSION=0.1.4
+BAZEL_INSTALLER=bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
+wget "https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/$BAZEL_INSTALLER"
+wget "https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/$BAZEL_INSTALLER.sha256"
+
+BAZEL_SHA=$(sha256sum bazel-$BAZEL_VERSION-installer-linux)
+BAZEL_CHECK=$(cat $BAZEL_INSTALLER.sha256)
+[[ "$BASEL_SHA" -eq "$BAZEL_CHECK"]] && sudo ./$BAZEL_INSTALLER
 ```
 
 clone tensorflow:
 
 ```shell
-
+git clone git@github.com:tensorflow/tensorflow ~/src/tensorflow
+cd ~/src/tensorflow
+# git tags --list # nah, ride this one on master, baby
 ```
 
 ### opencv
-
 
 
 ### ruby
@@ -852,6 +843,8 @@ ruby
 ```shell
 ruby-install --latest
 ruby-install ruby 2.3.0
+
+# TODO: set system default?
 ```
 
 ### docker
@@ -871,4 +864,25 @@ sudo apt-cache policy docker-engine # package docker-engine doesn't exist...
 .... welllll looks like i have to patch the kernel and rebuild. fuck that right now.
 
 
+### weechat (linux)
+
+for some reason, my osx weechat config doesn't work on linux.  it just
+freaks out and loses the colors.  THE COLORS!!
+
+TODO: document weechat setup
+
+NOTE: it makes me nervous running weechat with any priviledges at all,
+knowing that all the plugins rely on scripting languages and
+user-based configuration of string interpolation.
+euuugghhh. seriously, you should probably run weechat under another
+user or some shit, though ... that's not really going to help. run it
+on another laptop.  that's what i always do. or within a vm/docker.
+
+sometimes i wake up at night in a cold sweat and i could swear there's
+a weechat plugin vuln under the bed and i freak out and check it
+... but there's never anything there.
+
+### prodigy XMPP chat
+
+TODO: redocument prodigy setup
 

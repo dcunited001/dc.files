@@ -169,7 +169,7 @@ sudo apt-get install texinfo libx11-dev libxext-dev libgtk-3-dev \
   xaw3dg-dev libxmu-dev libxmuu-dev libxpm-dev libxt-dev libxtst-dev \
   libxv-dev libgif-dev
 
-# libungif4-dev libxtrap-dev 
+# libungif4-dev libxtrap-dev
 # x-dev xlibs-static-dev
 ```
 
@@ -269,7 +269,7 @@ something)
 `sudo apt-get install bcmwl-kernel-source`
 
 restart after wireless finishes installing.  you may need to upgrade
-your initramdisk.  this is done with
+your initramdisk.  this is done with.
 
 ### webcam
 
@@ -331,6 +331,12 @@ sudo sh cuda_7.5.18_linux.run
 ```
 
 So this installed the nvidia drivers and CUDA software
+
+### Macbook Pro Brightness Keys
+
+There's pretty much nothing you can do AFAIK, once you've installed
+the nvidia graphics drivers.  I mean, I'm sure you *can* get the
+brightness to adjust, but is it really crucial?
 
 ### rEFInd Config
 
@@ -705,7 +711,20 @@ As of now, I have `ls -l $(which python)` pointing to `/usr/bin/python
 `/usr/bin/python3 -> python3.4`, with neither `pip` or `pip3`.  So,
 clean install of both `python2` and `python3`.
 
+
+.... on second thought, i'm going to try to just install with pip.
+this is significantly more simple.  i think my problem was not
+activating my virtualenv.
+
+```shell
+sudo apt-get install python-pip
+sudo pip install virtualenv virtualenvwrapper
+```
+
+#### installing without pip
+
 going to install `virtualenv` from source, without `pip`, then install pips within virtualenv
+
 
 ```shell
 git clone git@github.com:pypa/virtualenv ~/src/python/virtualenv
@@ -726,7 +745,7 @@ setting up virtualenvwrapper requires `setuptools`:
 ```shell
 git clone git@github.com:jaraco/setuptools ~/src/python/setuptools
 cd ~/src/python/setuptools
-
+sudo python ez_setup.py
 ```
 
 set up `virtualenvwrapper`:
@@ -738,27 +757,73 @@ cd ~/src/python/virtualenvwrapper
 sudo python setup.py install
 ```
 
-configure `virtualenvwrapper`:
+... this did not work: no module named stevedore/pbr? need to install more deps.
+i reinstalled virtualenv/virtualenvwrapper with pip
 
+#### configuring virtualenvwrapper
 
+to configure `virtualenvwrapper` add the following to your
+`~/.bash_profile` or `~/.zprofile` (or whatever)
+
+```shell
+export WORKON_HOME=$HOME/.virtualenv
+export PROJECT_HOME=$HOME/dev/python
+source /usr/local/bin/virtualenvwrapper.sh
+# or load virtualenvwrapper_lazy for lazy loading
+```
 
 install pythons and pips:
 
+```shell
+# create a new virtaulenv
+mkvirtualenv foo_env
 
+# and thest
+workon foo_env
+pip install django # no sudo
+```
 
-test pip without sudo:
+strangely, i have a bunch of errors that show up concerning missing
+scripts that actually exist.  i ran into this last time.
+
+```
+mkvirtualenv fooenv
+New python executable in /home/dc/.virtualenvs/fooenv/bin/python
+Installing setuptools, pip, wheel...done.
+virtualenvwrapper.user_scripts creating /home/dc/.virtualenvs/fooenv/bin/predeactivate
+virtualenvwrapper.user_scripts creating /home/dc/.virtualenvs/fooenv/bin/postdeactivate
+virtualenvwrapper.user_scripts creating /home/dc/.virtualenvs/fooenv/bin/preactivate
+virtualenvwrapper.user_scripts creating /home/dc/.virtualenvs/fooenv/bin/postactivate
+virtualenvwrapper.user_scripts creating /home/dc/.virtualenvs/fooenv/bin/get_env_details
+virtualenvwrapper.user_scripts could not run "/home/dc/.virtualenvs/premkvirtualenv": [Errno 2] No such file or directory
+virtualenvwrapper.user_scripts could not run "/home/dc/.virtualenvs/preactivate": [Errno 2] No such file or directory
+virtualenvwrapper.user_scripts could not run "/home/dc/.virtualenvs/fooenv/bin/preactivate": [Errno 2] No such file or directory
+deactivate:unset:1: no such hash table element: pydoc
+```
+
+### cuda
+
+TODO: before tensorflow, i need to ensure CUDA is installed properly.
+in linux mint, this meant reinstalling nvidia drivers using the run.sh
+script.
 
 ### tensorflow
 
-a better test would be to built/install tensorflow, since I'm going to be doing that anyways.
+going to build/install tensorflow GPU version:
 
+install bazel & deps:
 
+```shell
 
+```
 
+clone tensorflow:
+
+```shell
+
+```
 
 ### opencv
-
-
 
 
 

@@ -342,9 +342,11 @@ So this installed the nvidia drivers and CUDA software
 
 ### Macbook Pro Brightness Keys
 
-There's pretty much nothing you can do AFAIK, once you've installed
-the nvidia graphics drivers.  I mean, I'm sure you *can* get the
-brightness to adjust, but is it really crucial?
+Do this after configuring nvidia.  Otherwise it will be reset.
+
+```shell
+sudo setpci -v -H1 -s 00:01.00 BRIDGE_CONTROL=0
+```
 
 ### rEFInd Config
 
@@ -830,7 +832,6 @@ works.
 
 TODO: describe installing CUDNN toolkit 6.5 (2.0)
 
-
 #### install tensorflow
 
 clone tensorflow and init git submodules
@@ -940,9 +941,10 @@ they need to be wrapped with c header files. i don't know enough about
 this domain to understand the best way to do this.
 
 one of the reasons I like swift so much is because it's like a
-`functional c`.  you can craft low-level memory structing,
+`functional c`.  you can craft low-level, memory structing,
 bitcrunching apps and it feels fast.  yet, you can easily employ your
-favorite functional programming patterns. 
+favorite functional programming patterns.  and it easily interops
+with c if you need it.
 
 ### docker
 
@@ -963,7 +965,6 @@ sudo apt-cache policy docker-engine # package docker-engine doesn't exist...
 
 .... welllll looks like i have to patch the kernel and rebuild. fuck
 that right now.
-
 
 ### weechat (linux)
 

@@ -821,6 +821,16 @@ BAZEL_CHECK=$(cat $BAZEL_INSTALLER.sha256)
   echo "WARNING: checksums don't match!"
 ```
 
+#### config GPU support for TF
+
+TODO: describe installing CUDA (using )
+
+note: installing CUDA 7.5 and just linking 7.5 to 7.0, *supposedly*
+works.
+
+TODO: describe installing CUDNN toolkit 6.5 (2.0)
+
+
 #### install tensorflow
 
 clone tensorflow and init git submodules
@@ -835,7 +845,6 @@ cd ~/src/tensorflow
 ```
 
 install system deps:
-
 
 just going to build tf with system python.  mostly because i dont'
 feel like learning how to config the equivalent of python-dev with
@@ -864,7 +873,10 @@ with bazel.
 sudo apt-get install python-numpy swig python-dev
 ```
 
-
+also, note: if performance really is an issue, building the deps for
+python numpy should probably boost performance significantly.  but, so
+does using c++ instead of python.  and in the end, your TF code will
+be written in c++ if it does anything crucial.
 
 ### opencv
 

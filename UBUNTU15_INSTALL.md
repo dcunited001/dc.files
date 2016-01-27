@@ -878,6 +878,10 @@ python numpy should probably boost performance significantly.  but, so
 does using c++ instead of python.  and in the end, your TF code will
 be written in c++ if it does anything crucial.
 
+also, nvidia offers libs with GPU support for Lapack/BLAS, etc.
+Really, there is a ton of room for improvement on most apps with
+scientific computing and/or machine learning dependencies.
+
 ### opencv
 
 
@@ -910,9 +914,42 @@ ruby-install ruby 2.3.0
 # TODO: set system default?
 ```
 
+### swift
+
+why? because swift+swig is probably going to rock.  i'm just saying.
+
+[ray wenderlich guide](https://github.com/apple/swift). swift.org
+[repository list](https://swift.org/source-code/#cloned-repositories)
+and
+[dev snapshots](https://swift.org/download/#latest-development-snapshots).
+
+but, i'm going to want to build swift-lang on linux, so that process
+is described on the main [swift repo](https://github.com/apple/swift).
+also, need to build the
+[swift package manager](https://github.com/apple/swift).  and download
+some of the core libs.
+
+swig will be needed if you want to do anything useful with swift. swig
+helps create interfaces to c++ from many different programming
+langs. it appears that someone has already tried to create a project
+to bridge `swift` to `c++` libs using `swiq`, but sited some problems
+a bit over my head (non-re-entrant?) as to why it wouldn't work well.
+
+it is possibly to extend swift with the functionality of c++ libs, but
+they need to be wrapped with c header files. i don't know enough about
+this domain to understand the best way to do this.
+
+one of the reasons I like swift so much is because it's like a
+`functional c`.  you can craft low-level memory structing,
+bitcrunching apps and it feels fast.  yet, you can easily employ your
+favorite functional programming patterns. 
+
 ### docker
 
-docker's own documentation is sufficient.  mostly documenting this because, when using a custom kernel in Ubuntu, you can't `apt-get` a package for `linux-image-extra`, so ... no AUFS.  also, i want all of my set up documentation to be centralized.
+docker's own documentation is sufficient.  mostly documenting this
+because, when using a custom kernel in Ubuntu, you can't `apt-get` a
+package for `linux-image-extra`, so ... no AUFS.  also, i want all of
+my set up documentation to be centralized.
 
 setup the docker ppa
 
@@ -924,7 +961,8 @@ sudo apt-get purge lxc-docker
 sudo apt-cache policy docker-engine # package docker-engine doesn't exist...
 ```
 
-.... welllll looks like i have to patch the kernel and rebuild. fuck that right now.
+.... welllll looks like i have to patch the kernel and rebuild. fuck
+that right now.
 
 
 ### weechat (linux)

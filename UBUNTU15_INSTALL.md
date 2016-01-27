@@ -810,9 +810,15 @@ BAZEL_INSTALLER=bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
 wget "https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/$BAZEL_INSTALLER"
 wget "https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/$BAZEL_INSTALLER.sha256"
 
-BAZEL_SHA=$(sha256sum bazel-$BAZEL_VERSION-installer-linux)
+# ssh downgrade attacks make me nervous about wget'ing
+# or curling any executable script
+# ... i realllly lil to see that lil green icon in the browser
+
+BAZEL_SHA=$(sha256sum $BAZEL_INSTALLER)
 BAZEL_CHECK=$(cat $BAZEL_INSTALLER.sha256)
-[[ "$BASEL_SHA" -eq "$BAZEL_CHECK"]] && sudo ./$BAZEL_INSTALLER
+[[ "$BASEL_SHA" == "$BAZEL_CHECK"]] &&
+  sudo bash $BAZEL_INSTALLER ||
+  echo "WARNING: checksums don't match!"
 ```
 
 clone tensorflow:

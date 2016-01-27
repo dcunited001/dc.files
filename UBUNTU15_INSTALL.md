@@ -821,13 +821,50 @@ BAZEL_CHECK=$(cat $BAZEL_INSTALLER.sha256)
   echo "WARNING: checksums don't match!"
 ```
 
-clone tensorflow:
+#### install tensorflow
+
+clone tensorflow and init git submodules
 
 ```shell
-git clone git@github.com:tensorflow/tensorflow ~/src/tensorflow
+git clone --recurse-submodules git@github.com:tensorflow/tensorflow ~/src/tensorflow
 cd ~/src/tensorflow
 # git tags --list # nah, ride this one on master, baby
+
+# make sure you included --recurse-submodules, or TF doesn't include protobuf
+# and you'll need to `git submodule init && git submodule update`
 ```
+
+install system deps:
+
+
+just going to build tf with system python.  mostly because i dont'
+feel like learning how to config the equivalent of python-dev with
+virtualenv. does that mean i need to build python? and setup up libs
+in /usr/.../wherever?  these are the things i don't actually want to
+spend the time learning.  it'd be wonderful if i could find a python
+export to answer all these questions.
+
+however, i'll be using tf with a virtualenv python, so i'll need to
+ensure these libs are set up there. another alternative is to build TF
+within a docker container. which just seems to be the way to go all
+around, for many, many reasons.
+
+also, i could just download a pre-built TF docker image, but where's
+the fun in that? and besides, you can't [easily] add custom ops to TF
+if you're using a pre-built docker image.  So no, no ops based on
+OpenCV api.
+
+and HA!, i said 'easily'.  maybe i should have said
+'quickly' instead. although, that's a joke, if you're using GPU
+support in TF.  the bazel build times are ridiculous with GPU!! i
+think the key here is to learn how to perform differential builds
+with bazel.
+
+```shell
+sudo apt-get install python-numpy swig python-dev
+```
+
+
 
 ### opencv
 

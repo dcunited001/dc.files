@@ -62,8 +62,10 @@ It is a small tragedy, but there are no pwsafe managers for linux that:
 loxodo is a small command-line and GUI capable system for opening
 password files.
 
-```shell # i've got this one memorized sudo apt-get install
-git@github.com:sommer/loxodo ~/src/loxodo cd ~/src/loxodo ```
+```shell
+# i've got this one memorized sudo apt-get install
+git@github.com:sommer/loxodo ~/src/loxodo
+```
 
 now put your password file where you want it and keep it on USB. also,
 you can keep loxodo on USB and load it as needed. luks that ish.
@@ -73,7 +75,13 @@ also be run in GUI mode, which I feel is less trustworthy.  close the
 app when you're not using it.  you can set a shortcut to open it, but
 be careful.
 
-TODO: setup loxodo with GTK for GUI (requires pip & pygtk?)
+installing loxodo with GUI:
+
+```shell
+sudo apt-get install python-wxgtk2.8
+cd ~/src/loxodo
+sudo ./setup.py install
+```
 
 ### dotfiles
 

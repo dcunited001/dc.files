@@ -255,6 +255,16 @@ link configs
 ln -s ~/.files/emacs.d ~/.emacs.d
 ```
 
+link custom configs
+
+```shell
+ln -s ~/.files/emacs/init-local.el ~/.emacs.d/lisp/
+```
+
+copy thesaurus to ~/.files/emacs
+
+
+
 ### A brief detour into emacs
 
 Open emacs and it should automatically download the necessary

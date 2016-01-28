@@ -107,8 +107,16 @@ for zsh.
 link emacs.  i now use `purcell/emacs.d`
 
 ```shell
-
+ln -s ~/.files/emacs.d ~/.emacs.d
 ```
+
+now link the customizations
+
+
+
+download and update the thesaurus
+
+
 
 ### fonts
 
@@ -159,9 +167,59 @@ running in Ubuntu, bc that shit drives me crazy.  i'm always
 misclicking things and scrolling/highlighting and i enjoy the
 multitouch drivers occasionally.
 
+download `mtrack` & remove `synaptics`
+
 ```shell
-# TODO: describe touchpad config
+gsettings set org.gnome.settings-daemon.plugins.mouse active false
+sudo apt-get install xserver-xorg-input-mtrack
+sudo apt-get autoremove xserver-xorg-input-synaptics
+sudo rm /usr/share/X11/xorg.conf.d/50-synaptics.conf
 ```
+
+configure `/usr/share/X11/xorg.conf.d/50-synaptics.conf`. example
+config below.  more info found in
+[Ubuntu docs for MacbookPro 11,1](https://help.ubuntu.com/community/MacBookPro11-1/utopic)
+
+```
+Section "InputClass"
+ MatchIsTouchpad "on"
+ Identifier "Touchpads"
+ Driver "mtrack"
+ Option "IgnoreThumb" "true"
+ Option "ThumbSize" "50"
+ Option "IgnorePalm" "true"
+ Option "DisableOnPalm" "false"
+ Option "BottomEdge" "30"
+ Option "TapDragEnable" "true"
+ Option "Sensitivity" "0.6"
+ Option "FingerHigh" "3"
+ Option "FingerLow" "2"
+ Option "ButtonEnable" "true"
+ Option "ButtonIntegrated" "true"
+ Option "ButtonTouchExpire" "750"
+ Option "ClickFinger1" "1"
+ Option "ClickFinger2" "3"
+ Option "TapButton1" "1"
+ Option "TapButton2" "3"
+ Option "TapButton3" "2"
+ Option "TapButton4" "0"
+ Option "TapDragWait" "100"
+ Option "ScrollLeftButton" "7"
+ Option "ScrollRightButton" "6"
+ Option "ScrollDistance" "100"
+EndSection
+```
+
+enable natural scrolling:
+
+```
+# in general, don't use xmodmap if you don't have to.  just don't.  use xkb
+echo "pointer = 1 2 3 5 4 6 7 8 9 10 11 12" >> .Xmodmap
+```
+
+restart lightdm with `sudo restart lightdm` or `sudo service lightdm
+restart`. it's seriously fucking lame to have to restart your window
+manager to adjust mouse settings.  fucking stupid.
 
 ### emacs
 
@@ -743,7 +801,6 @@ install pythons and pips:
 ```shell
 # create a new virtaulenv
 mkvirtualenv foo_env
-
 # and thest
 workon foo_env
 pip install django # no sudo
@@ -840,7 +897,6 @@ clone tensorflow and init git submodules
 git clone --recurse-submodules git@github.com:tensorflow/tensorflow ~/src/tensorflow
 cd ~/src/tensorflow
 # git tags --list # nah, ride this one on master, baby
-
 # make sure you included --recurse-submodules, or TF doesn't include protobuf
 # and you'll need to `git submodule init && git submodule update`
 ```
@@ -986,5 +1042,16 @@ a weechat plugin vuln under the bed and i freak out and check it
 
 ### prodigy XMPP chat
 
-TODO: redocument prodigy setup
+Available via apt-get on ubuntu 15.10. If you want to build yourself,
+you'll need to build some dependencies as well.
+
+```shell
+sudo apt-get install profanity
+```
+
+To manage passwords in your profanity config, use GNU `secret-tools`:
+
+```shell
+sudo apt-get install libsecret-tools
+```
 

@@ -180,33 +180,39 @@ configure `/usr/share/X11/xorg.conf.d/50-synaptics.conf`. example
 config below.  more info found in
 [Ubuntu docs for MacbookPro 11,1](https://help.ubuntu.com/community/MacBookPro11-1/utopic)
 
+yeh, by the way, fucking mtrack stomped on my webcam.  so now i gotta figure out why that shit doesn't load...
+
+wow, this took me 3 hours to configure and i still don't understand
+what the values for `ClickFingerX` do... so pissed right now.
+
 ```
 Section "InputClass"
- MatchIsTouchpad "on"
- Identifier "Touchpads"
- Driver "mtrack"
- Option "IgnoreThumb" "true"
- Option "ThumbSize" "50"
- Option "IgnorePalm" "true"
- Option "DisableOnPalm" "false"
- Option "BottomEdge" "30"
- Option "TapDragEnable" "true"
- Option "Sensitivity" "0.6"
- Option "FingerHigh" "3"
- Option "FingerLow" "2"
- Option "ButtonEnable" "true"
- Option "ButtonIntegrated" "true"
- Option "ButtonTouchExpire" "750"
- Option "ClickFinger1" "1"
- Option "ClickFinger2" "3"
- Option "TapButton1" "1"
- Option "TapButton2" "3"
- Option "TapButton3" "2"
- Option "TapButton4" "0"
- Option "TapDragWait" "100"
- Option "ScrollLeftButton" "7"
- Option "ScrollRightButton" "6"
- Option "ScrollDistance" "100"
+        MatchIsTouchpad "on"
+        Identifier "Touchpads"
+        Driver "mtrack"
+        Option "IgnoreThumb" "true"
+        Option "ThumbSize" "25"
+        Option "IgnorePalm" "true"
+        Option "DisableOnPalm" "false"
+        Option "BottomEdge" "30"
+        Option "TapDragEnable" "true"
+        Option "Sensitivity" "0.6"
+        Option "FingerHigh" "3"
+        Option "FingerLow" "2"
+        Option "ButtonEnable" "true"
+        Option "ButtonIntegrated" "true"
+        Option "ButtonTouchExpire" "750"
+        Option "ClickFinger1" "3"
+        Option "ClickFinger2" "2"
+        Option "ClickFinger3" "0"
+        Option "TapButton1" "0"
+        Option "TapButton2" "0"
+        Option "TapButton3" "0"
+        Option "TapButton4" "0"
+        Option "TapDragWait" "100"
+        Option "ScrollLeftButton" "7"
+        Option "ScrollRightButton" "6"
+        Option "ScrollDistance" "100"
 EndSection
 ```
 
@@ -395,6 +401,14 @@ sudo modprobe facetimehd
 
 apparently there are problems with keeping the cam on if the laptop
 sleeps. see the wiki for more info
+
+also, if there are startup problems with `bdc_pci` being loaded first,
+this should force `facetimehd` to be loaded first, blocking `bdc_pci`.
+
+```shell
+echo "facetimehd" | sudo tee -a /etc/modules
+```
+
 
 ### nvidia
 

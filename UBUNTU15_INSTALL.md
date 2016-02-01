@@ -144,6 +144,24 @@ Here, i just
 
 TODO:
 
+### HiDPI
+
+instead of tweaking fonts for each setting, go to `Display` under
+`System Settings` and change the font scaling to `1.5` or `2.0`,
+whatever you prefer.  For most apps, this fixes most problems
+for UI font size.  Emphasis on **MOST** !@#$ ! $@#! $@ $!.  
+
+Jetbrains IntelliJ (and Rubymine) was still acting up. The problem was
+that UI fonts scaled properly, but not the code I was reading.  I
+needed to create a custom theme in order to change it's font size.
+I scaled it to 22 and this fixed my problems.  
+
+Emacs was also giving me shit.  So i needed to fix the fonts in that
+application on a one-off basis as well.  Sorry, this is just dumb and
+means that when i reinstall my system, i have two dozen random system
+preferences to apply in random places in order to get things back to
+the way the were.  And this makes me very very angry.
+
 ### xkb
 
 yeh, turns out the problem was the format of xml (forgot to put

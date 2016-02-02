@@ -642,6 +642,11 @@ update EFI: copy /boot/* images and make conf changes
 
 refer to [FFMPEG docs](https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu)
 
+> NOTE: you're really going to want to build these shared library dependencies
+> in a location that's bundled together with FFMpeg and OBS.  Otherwise, your
+> OS won't hesitate to step on them when you update.  Bye Bye lib-@#$%.so.
+> No more OBS.
+
 required packages:
 
 ```shell

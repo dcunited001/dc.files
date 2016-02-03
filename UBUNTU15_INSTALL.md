@@ -22,6 +22,10 @@ setup git config:
 ```
 git config --global user.name "David Conner"
 git config --global user.email "dconner.pro@gmail.com"
+git config --global core.excludesfile ~/.gitignore_global
+
+# after cloning .files:
+ln -s ~/.files/git/gitignore_global.ubu ~/.gitignore_global
 ```
 
 ### privacy
@@ -149,12 +153,12 @@ TODO:
 instead of tweaking fonts for each setting, go to `Display` under
 `System Settings` and change the font scaling to `1.5` or `2.0`,
 whatever you prefer.  For most apps, this fixes most problems
-for UI font size.  Emphasis on **MOST** !@#$ ! $@#! $@ $!.  
+for UI font size.  Emphasis on **MOST** !@#$ ! $@#! $@ $!.
 
 Jetbrains IntelliJ (and Rubymine) was still acting up. The problem was
 that UI fonts scaled properly, but not the code I was reading.  I
 needed to create a custom theme in order to change it's font size.
-I scaled it to 22 and this fixed my problems.  
+I scaled it to 22 and this fixed my problems.
 
 Emacs was also giving me shit.  So i needed to fix the fonts in that
 application on a one-off basis as well.  Sorry, this is just dumb and
@@ -762,7 +766,7 @@ hash -r
 
 Ran into problems building obs with this ffmpeg build, where make was
 complaining about "-fPIC" flags.  I needed to add --enable-pic or --with-pic
-to each built dependency.  or --enable-shared. 
+to each built dependency.  or --enable-shared.
 
 ### obs
 
@@ -1101,4 +1105,3 @@ To manage passwords in your profanity config, use GNU `secret-tools`:
 ```shell
 sudo apt-get install libsecret-tools
 ```
-

@@ -1033,11 +1033,11 @@ how to install:
 git clone git@github.com:nodejs/node ~/src/node
 git clone git@github.com:npm/npm ~/src/npm
 
-mkdir ~/bin
-# echo 'export PATH=$PATH:$HOME/bin' >> ~/.zsh/.zshrc # if it's not there already
+mkdir ~/local
+echo 'export PATH=$PATH:$HOME/local/bin' >> ~/.zsh/.zshrc # if it's not there already
 
 cd ~/src/node
-./configure --prefix=~/bin
+./configure --prefix=~/local
 make -j8
 make install
 

@@ -27,7 +27,7 @@ git config --global core.excludesfile ~/.gitignore_global
 # after cloning .files:
 ln -s ~/.files/git/gitignore_global.ubu ~/.gitignore_global
 ```
-
+q
 ### privacy
 
 Hit `Super` and type `privacy` and hit `Enter`.  Navigate to the
@@ -1020,6 +1020,30 @@ ruby-install --latest
 ruby-install ruby 2.3.0
 
 # TODO: set system default?
+```
+
+### NodeJS
+
+I needed to install NodeJS for `execjs` and `uglifier` from within a
+Rails project.  I checked out
+[this gist](https://gist.github.com/isaacs/579814), which describes
+how to install:
+
+```shell
+git clone git@github.com:nodejs/node ~/src/node
+git clone git@github.com:npm/npm ~/src/npm
+
+mkdir ~/bin
+# echo 'export PATH=$PATH:$HOME/bin' >> ~/.zsh/.zshrc # if it's not there already
+
+cd ~/src/node
+./configure --prefix=~/bin
+make -j8
+make install
+
+cd ~/src/npm
+make -j8
+make install
 ```
 
 ### swift

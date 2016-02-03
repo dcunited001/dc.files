@@ -1022,6 +1022,31 @@ ruby-install ruby 2.3.0
 # TODO: set system default?
 ```
 
+### Postgres
+
+download and config postgres with:
+
+```shell
+sudo apt-get install postgresql postgresql-server-dev-9.4
+```
+
+then, open a psql console with the `postgres` user:
+
+```shell
+sudo -u postgres psql postgres
+```
+
+now, run `\passwd` in the psql console to reset the password.
+finally, run `sudo -u postgres createuser $PG_USERNAME` to create a postgres user.
+answer no, yes, no to `superuser?`, `create databases?` and `create roles?`. If
+user is created non-interactively by this command, you might have to use 'psql' to
+grant the 'CREATE DATABASE` permission.  In this case, open a psql prompt with
+the postgres user and run:
+
+```SQL
+ALTER USER $PG_USERNAME WITH CREATEDB;
+```
+
 ### NodeJS
 
 I needed to install NodeJS for `execjs` and `uglifier` from within a

@@ -3,9 +3,9 @@ dc.files on Linux Mint 17.3
 
 Taking some notes while I configure my environment for Linux Mint.  Mostly doing this for myself, since
 my dotfiles are slightly different for Linux than for Mac.  That way, if don't have to scour the
-nets again if I have to blow away my Linux install, which happens quite often.  
+nets again if I have to blow away my Linux install, which happens quite often.
 
-The main reason I'm installing Linux alongside OSX is because CUDA only works natively and the GPU build of 
+The main reason I'm installing Linux alongside OSX is because CUDA only works natively and the GPU build of
 TensorFlow doesn't work with OSX at the moment. I also want to switch to Linux for a myriad of minor reasons,
 but there's just as many reasons I'd like to stay on OSX.
 
@@ -16,33 +16,33 @@ I'm really going to miss **iTerm2** and **SourceTree**, as well as lots of other
 
 #### Karabiner/Seil (KeyRemap for Macbook)
 
-In OSX, these programs give you the ability to completely remap your keyboard with absolutely zero limitations. 
+In OSX, these programs give you the ability to completely remap your keyboard with absolutely zero limitations.
 I'm going to try out `xkb`, which is a command line tool for creating custom keyboard layouts.  I've used `xmodmap` in
-the past, but I've found that getting it to reliably load and function on startup is frustrating.  
+the past, but I've found that getting it to reliably load and function on startup is frustrating.
 
-I found some `xkb` articles I hadn't seen before.  I last looked in 2013, so I don't know how I missed these. 
+I found some `xkb` articles I hadn't seen before.  I last looked in 2013, so I don't know how I missed these.
 
 
 - [XKB config](http://www.dotkam.com/2007/06/25/custom-keyboard-layout-in-ubuntu-or-just-linux-2/)
 - [Changing Keyboard Layouts with XKB](http://hack.org/mc/writings/xkb.html)
 - [Keyboard Config in Xorg (Arch Linux)](	https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg)
 
-I hope I don't spend too much time getting `xkb` to work.  I really just need my 
+I hope I don't spend too much time getting `xkb` to work.  I really just need my
 [digimon keyboard layout](https://github.com/dcunited001/dc.files.kbd#digimon-layout)
 to work. It's awesome. I couldn't live without it as a developer.
 
-The one piece of behavior from Karabiner that I know to be nigh-impossible to get in Linux 
+The one piece of behavior from Karabiner that I know to be nigh-impossible to get in Linux
 are the simultaneous keypresses.  I can simulatneously press the arrow keys in lieu of `home` and `end`.
 I can also get easier access to chars like `< > { } ~` without having to hit a modifier key, which is kinda nice.
-I don't use these "key chords" very often, except for angle brackets.  Not the same thing as emacs "key chords" of course. 
+I don't use these "key chords" very often, except for angle brackets.  Not the same thing as emacs "key chords" of course.
 These are like true chords.
 
 > There is one limitation to the Karabiner software: the ability for
 > one application to intercept and replace a modifier key to be used
 > as a different modifier key in another application.  Such a feature
 > would be impossible, but it'd allow me to use this awesome pedal
-> hardware, so i can define modifier keys for my feet.  
-> 
+> hardware, so i can define modifier keys for my feet.
+>
 > Yes, I actually bought one of these pedals just for that.  And no,
 > there's no way to configure it to work how I want.  Trust me, I
 > spent hours trying to get it to work ... womp womp =[
@@ -53,7 +53,7 @@ Ugh ... running into some frustrating issues installing the linux pwsafe debian 
 
 Running into dependency version mismatch issues with this one.  Not really sure why the newest versions
 of the libwxgtk3.0 are missing from the standard Debian/Ubuntu repositories.  I can get `3.0.0`, but not
-`3.0.2-1+b1`.  Also, the .deb that's being distributed (it's a beta) depends on a beta from another 
+`3.0.2-1+b1`.  Also, the .deb that's being distributed (it's a beta) depends on a beta from another
 window manager?  That's sketchy.
 
 Spent about 2 hours on this one.  Going to just use some older scripts and move on.
@@ -64,9 +64,9 @@ SourceTree is a great Git client for OSX/Windows with a GUI.  No idea why a cros
 but is available on both windows and mac.  That's strange but I'm sure there's a good reason for it.
 
 There's a beta app for a new GUI Git client called **Git Kraken**.  It's completely cross platform.  I hope
-to be able to use it.  Otherwise, I'm going to look at smartgit, gitg, giggle, git-cola. 
+to be able to use it.  Otherwise, I'm going to look at smartgit, gitg, giggle, git-cola.
 
-Sweet, i got approved for the Git Kraken Beta. 
+Sweet, i got approved for the Git Kraken Beta.
 
 #### Quicksilver/Alfred
 
@@ -75,12 +75,12 @@ applications.  So I never have to hit `alt-tab`.  I know, I know, Quicksilver an
 But this is the main feature I want, since by using it, I never have to retain the state of the OS user interface in my limited
 short term memory.  It helps, a ton.
 
-I've tried Gnome DO in the past, which worked pretty well, but I'd like to try something else. 
+I've tried Gnome DO in the past, which worked pretty well, but I'd like to try something else.
 Maybe [Synapse](https://code.launchpad.net/synapse-project).  Yeh, going to try Synapse.
 
 However, upon reading [this article](http://www.noobslab.com/2015/02/synapse-launcher-new-version-released.html)
 and hearing that Synapse works by logging user activity and searching/indexing those logs, I'm
-not sure I would want to use it.  I'll try it out i guess. 
+not sure I would want to use it.  I'll try it out i guess.
 
 Also, it installs a language called `vala`.  Weird.  Were other
 languages not good enough? A little-known lanuage that, with the
@@ -208,20 +208,20 @@ so then you spend a ton of time figuring out what you need and what you don't be
 you finally realize: oh even though i removed it from apt-get, it's still on my system
 and it's way old, this isn't a new version that's breaking my shit, it's an old one....
 
-## so yeh: time wasted, lesson-learned: 
+## so yeh: time wasted, lesson-learned:
 
 > just compile everything from source
 
 ... oh, and just run everything on a geeked out arch linux distro, terminal only,
-with maybe an ncurses-only gui.  maybe.  
+with maybe an ncurses-only gui.  maybe.
 
 > on the flipside, the GUI IRC client bundled with Linux Mint looked interesting.
 > I almost used it, except, again ... 80s miami vice colors make me look liek a l33t
-> bell labs hacker. 
+> bell labs hacker.
 
 and also, text interfaces are almost more fun to configure.
 configs are almost always self-explanatory and portable. for most
-GUI apps, a portable human-readable config file is a second thought. 
+GUI apps, a portable human-readable config file is a second thought.
 this is actually the exception and not the rule with linux, though. kudos.
 
 **OBS**
@@ -239,37 +239,37 @@ my browser sessions to end at the browser.  Sorry.
 ### Getting Linux Installed
 
 If you are unfamiliar with the soul-sucking, self-ablating, hellish cyclocosm of mundanity that is
-attempting to install Broadcom Wifi drivers without ethernet, you may not be able to relate to this section. 
+attempting to install Broadcom Wifi drivers without ethernet, you may not be able to relate to this section.
 Skip ahead to Initial Environment Configuration.  Otherwise, proceed ahead, but beware - you are risking
 your sanity by simply reading the next few paragraphs.
 
-Installed linux mint on a 2013 Macbook Pro.  I ran into some issues with wifi and bootloader.  
+Installed linux mint on a 2013 Macbook Pro.  I ran into some issues with wifi and bootloader.
 I only had one USB drive with me and could access the net, as I didn't have a wired connection.
 Kind of a bummer since I didn't want to walk home.  Goddammit I hate Broadcom.  I swear to god,
-there is space in the 8th circle of hell reserved just for Broadcom Wireless.  Right beside the 
-pedophile-apologist pope from the 12th century.  But I digress. 
+there is space in the 8th circle of hell reserved just for Broadcom Wireless.  Right beside the
+pedophile-apologist pope from the 12th century.  But I digress.
 
 Tried to keep Mint running while I manually
-downloaded the broadcom-wl drivers on another laptop.  But cinnamon crashed when I tried to get Broadcom 
+downloaded the broadcom-wl drivers on another laptop.  But cinnamon crashed when I tried to get Broadcom
 drivers installed.  Bullshit.  Couldn't keep linux installed because I couldn't download and run `efibootmgr` with
 out wifi.  Had to install multiple times.  Not a big deal, but still bullshit for something that should
-take 5 minutes.  
+take 5 minutes.
 
-Thought about creating a FAT partition on my hard drive, so I could cache 
+Thought about creating a FAT partition on my hard drive, so I could cache
 some files.  But I was just tired of dicking with linux and trying to hack on wifi.  I didn't realize
 that the Broadcom drivers were already included with Linux Mint -- I think no d/l necessary??  Which
 is, once again, bullshit because I never actually had a problem to begin with.  All in all,
 I wasted like 2 hours of time wrestling with a dumb problem that wasn't real.  I gave in
-and started reading some papers I needed to catch up to learn about computer vision and 
+and started reading some papers I needed to catch up to learn about computer vision and
 machine learning algorithms applied towards diagnostics.
 
 Moving on...
 
 ### Initial Environment Configuration
 
-So later, i had ethernet access and everything took 5 minutes to install like it's supposed to. I had 
+So later, i had ethernet access and everything took 5 minutes to install like it's supposed to. I had
 some issues with the hidpi resolution being way to high, since the MBP 2013 screen is retina.  I needed
-to go to `Preferences > General` to get Cinnamon to adjust UI elements for. 
+to go to `Preferences > General` to get Cinnamon to adjust UI elements for.
 
 Note: retina-display resolution became a problem once I wanted to use the GPU for computing.  Over 700GB of GPU RAM are in use at all times on my system.  Tensorflow blows up if it tries to allocate more memory than is available.  Livestreaming over OBS requires even more memory.
 
@@ -283,11 +283,11 @@ I also set up the `English(Macintosh)` keyboard, which helps a little bit.  Some
 but most applications still recognize `Control` as `Super`, which is just really confusing.  Chromium does this.  Honestly, if
 that's the case, I'm going to just use the `English(International)` keyboard.  Linux's Mac keyboard layout doesn't help at all.
 
-Just needed to get some new SSH keys configured on the system and registered with Github/Bitbucket, 
+Just needed to get some new SSH keys configured on the system and registered with Github/Bitbucket,
 so I could start cloning my dotfiles, which have submodules registered with git protocol instead of HTTPS.
 So, now that i've got my .ssh folder configured.  I can download repos.
 
-``` 
+```
 cd $HOME
 sudo apt-get install git emacs vim curl
 
@@ -317,7 +317,7 @@ too much time on this. I'm hoping to hurry up and get to this computer vision pr
 
 ### fonts
 
-Installing the `Symbola` font gave me emoji text in ubuntu/mint. 
+Installing the `Symbola` font gave me emoji text in ubuntu/mint.
 
 ```
 sudo apt-get install ttf-symbola
@@ -447,13 +447,13 @@ sudo checkinstall
 
 ```
 
-However, it still wasnt working.  For Gnome users, you have the `cheese` GUI tool for using your webcam.  If it's not available `sudo apt-get install cheese`. 
+However, it still wasnt working.  For Gnome users, you have the `cheese` GUI tool for using your webcam.  If it's not available `sudo apt-get install cheese`.
 
 
 
 I needed to refer to the TLDP page on [webcams](http://www.tldp.org/HOWTO/Webcam-HOWTO/hardware.html), which contained some very handy info on troubleshooting general linux device issues.  I've used `lsmod`, `modprobe`, etc before, but this is a great resource in learning the ins and outs of dealing with linux device issues.
 
-To check if a device is loaded, run `dmesg | less` and search for your device. At this point, if you don't see it in the output, your device driver is not loaded by linux and applications won't be able to discover it either.  
+To check if a device is loaded, run `dmesg | less` and search for your device. At this point, if you don't see it in the output, your device driver is not loaded by linux and applications won't be able to discover it either.
 
 My webcam driver was not loaded.  I needed to discover if the driver was loadable and to do that, run `find /lib/modules -name $DRIVER_NAME`.  I stored these commands as aliases and put them in my dotfiles, so I can more quickly reference them later.  Better than using Google every time and this helps me remember them.  That, and blogging about it.
 
@@ -667,7 +667,7 @@ copy&paste...)
 - identify files in .config/* to port to dotfiles
   - e.g. terminator in .config/terminator/config
 - fix gnome-do (turned off as a startup service)
-  - the application seems to start up, 
+  - the application seems to start up,
   - but then process dies after one or two invocations
 
 ### emacs notes:

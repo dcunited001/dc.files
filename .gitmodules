@@ -25,9 +25,6 @@
 [submodule "ryanb"]
 	path = ryanb
 	url = git@github.com:ryanb/dotfiles
-[submodule "omz"]
-	path = omz
-	url = git@github.com:robbyrussell/oh-my-zsh
 [submodule "bash"]
 	path = bash
 	url = git@github.com:dcunited001/dc.files.bash
@@ -67,3 +64,6 @@
 [submodule "vscode"]
 	path = vscode
 	url = git@github.com:dcunited001/dc.files.vscode.git
+[submodule "antigen"]
+	path = antigen
+	url = git@github.com:zsh-users/antigen
